@@ -1,0 +1,393 @@
+{
+  "source_commit": "361bef30125af15eb3d25cac9a14826621afffdb",
+  "routes": [
+    {
+      "file": "app/api/tax/route.ts",
+      "methods": [
+        "GET",
+        "POST",
+        "DELETE"
+      ]
+    },
+    {
+      "file": "app/api/payroll/route.ts",
+      "methods": [
+        "GET",
+        "POST",
+        "PUT"
+      ]
+    },
+    {
+      "file": "app/api/documents/route.ts",
+      "methods": [
+        "POST",
+        "GET",
+        "DELETE",
+        "PATCH"
+      ]
+    },
+    {
+      "file": "app/api/access/route.ts",
+      "methods": [
+        "GET",
+        "POST",
+        "DELETE"
+      ]
+    },
+    {
+      "file": "app/api/import/route.ts",
+      "methods": [
+        "POST",
+        "GET"
+      ]
+    },
+    {
+      "file": "app/api/income/route.ts",
+      "methods": [
+        "GET",
+        "POST"
+      ]
+    },
+    {
+      "file": "app/api/inspections/route.ts",
+      "methods": [
+        "GET",
+        "POST"
+      ]
+    },
+    {
+      "file": "app/api/office-templates/route.ts",
+      "methods": [
+        "GET"
+      ]
+    },
+    {
+      "file": "app/api/client-dossier/route.ts",
+      "methods": [
+        "GET",
+        "POST"
+      ]
+    },
+    {
+      "file": "app/api/client-profile/route.ts",
+      "methods": [
+        "GET",
+        "POST",
+        "DELETE"
+      ]
+    },
+    {
+      "file": "app/api/accruals/route.ts",
+      "methods": [
+        "POST",
+        "DELETE"
+      ]
+    },
+    {
+      "file": "app/api/vat/route.ts",
+      "methods": [
+        "GET",
+        "POST"
+      ]
+    },
+    {
+      "file": "app/api/records/route.ts",
+      "methods": [
+        "GET",
+        "POST",
+        "DELETE"
+      ]
+    }
+  ],
+  "cloudflare": [
+    {
+      "file": "db/raw.ts",
+      "line": 1,
+      "symbols": [
+        "cloudflare:workers"
+      ]
+    },
+    {
+      "file": "db/index.ts",
+      "line": 1,
+      "symbols": [
+        "cloudflare:workers"
+      ]
+    },
+    {
+      "file": "app/chatgpt-auth.ts",
+      "line": 11,
+      "symbols": [
+        "oai-authenticated-user-id"
+      ]
+    },
+    {
+      "file": "app/chatgpt-auth.ts",
+      "line": 12,
+      "symbols": [
+        "oai-authenticated-user-email"
+      ]
+    },
+    {
+      "file": "app/chatgpt-auth.ts",
+      "line": 13,
+      "symbols": [
+        "oai-authenticated-user-full-name"
+      ]
+    },
+    {
+      "file": "app/chatgpt-auth.ts",
+      "line": 15,
+      "symbols": [
+        "oai-authenticated-user-full-name-encoding"
+      ]
+    },
+    {
+      "file": "app/chatgpt-auth.ts",
+      "line": 17,
+      "symbols": [
+        "signin-with-chatgpt"
+      ]
+    },
+    {
+      "file": "app/chatgpt-auth.ts",
+      "line": 18,
+      "symbols": [
+        "signout-with-chatgpt"
+      ]
+    },
+    {
+      "file": "app/page.tsx",
+      "line": 65,
+      "symbols": [
+        "signin-with-chatgpt"
+      ]
+    },
+    {
+      "file": "app/page.tsx",
+      "line": 66,
+      "symbols": [
+        "signout-with-chatgpt"
+      ]
+    },
+    {
+      "file": "lib/tax-connector.ts",
+      "line": 1,
+      "symbols": [
+        "cloudflare:workers"
+      ]
+    },
+    {
+      "file": "lib/office-auth.ts",
+      "line": 1,
+      "symbols": [
+        "cloudflare:workers"
+      ]
+    },
+    {
+      "file": "lib/office-auth.ts",
+      "line": 6,
+      "symbols": [
+        "oai-authenticated-user-id",
+        "oai-authenticated-user-email"
+      ]
+    },
+    {
+      "file": "lib/connector-preview.d.ts",
+      "line": 1,
+      "symbols": [
+        "virtual:sites-connector-preview"
+      ]
+    },
+    {
+      "file": "app/api/payroll/route.ts",
+      "line": 5,
+      "symbols": [
+        "cloudflare:workers"
+      ]
+    },
+    {
+      "file": "app/api/access/route.ts",
+      "line": 4,
+      "symbols": [
+        "cloudflare:workers"
+      ]
+    },
+    {
+      "file": "app/api/import/route.ts",
+      "line": 2,
+      "symbols": [
+        "cloudflare:workers"
+      ]
+    }
+  ],
+  "database": [
+    {
+      "file": "db/raw.ts",
+      "prepare": 0,
+      "batch": 0
+    },
+    {
+      "file": "lib/office-auth.ts",
+      "prepare": 3,
+      "batch": 0
+    },
+    {
+      "file": "app/api/tax/route.ts",
+      "prepare": 7,
+      "batch": 3
+    },
+    {
+      "file": "app/api/payroll/route.ts",
+      "prepare": 10,
+      "batch": 3
+    },
+    {
+      "file": "app/api/documents/route.ts",
+      "prepare": 9,
+      "batch": 0
+    },
+    {
+      "file": "app/api/access/route.ts",
+      "prepare": 13,
+      "batch": 5
+    },
+    {
+      "file": "app/api/import/route.ts",
+      "prepare": 12,
+      "batch": 3
+    },
+    {
+      "file": "app/api/income/route.ts",
+      "prepare": 14,
+      "batch": 2
+    },
+    {
+      "file": "app/api/inspections/route.ts",
+      "prepare": 22,
+      "batch": 3
+    },
+    {
+      "file": "app/api/client-dossier/route.ts",
+      "prepare": 6,
+      "batch": 1
+    },
+    {
+      "file": "app/api/client-profile/route.ts",
+      "prepare": 12,
+      "batch": 2
+    },
+    {
+      "file": "app/api/accruals/route.ts",
+      "prepare": 10,
+      "batch": 4
+    },
+    {
+      "file": "app/api/vat/route.ts",
+      "prepare": 8,
+      "batch": 1
+    },
+    {
+      "file": "app/api/records/route.ts",
+      "prepare": 34,
+      "batch": 6
+    }
+  ],
+  "r2": [
+    "db/raw.ts",
+    "app/api/documents/route.ts"
+  ],
+  "env_names": [
+    "BUCKET",
+    "CLOUDFLARE_CF_FETCH_ENABLED",
+    "CODEX_SANDBOX",
+    "DB",
+    "IMPORT_JOB_DIGEST",
+    "IMPORT_JOB_EXPIRES",
+    "IMPORT_JOB_TOKEN",
+    "MINIFLARE_REGISTRY_PATH",
+    "OFFICE_OWNER_EMAIL",
+    "TAX_CREDENTIALS_KEY",
+    "WRANGLER_LOG_PATH",
+    "WRANGLER_REGISTRY_PATH",
+    "WRANGLER_SEND_METRICS",
+    "WRANGLER_WRITE_LOGS"
+  ],
+  "sql": [
+    {
+      "path": "drizzle/0003_calm_ares.sql",
+      "sha256": "9a852ac531f2da9544d85f29aefe05ea03c1e5c13aa0fb3b23a53ff3170c160d"
+    },
+    {
+      "path": "drizzle/0005_long_ikaris.sql",
+      "sha256": "0f9af46df90f47c8c5bf01d32719be490bece3cf9cc85b2325db9307e6420a0c"
+    },
+    {
+      "path": "drizzle/0000_fine_kabuki.sql",
+      "sha256": "9af968b3ed269fe1a160e48509179d6efe735bf24215dab68c0e69c6a94bee00"
+    },
+    {
+      "path": "drizzle/0008_quick_scorpion.sql",
+      "sha256": "303f23155dd0709c0b9cb2862d9bf558933776305c4c530feca1516c2c9fd93a"
+    },
+    {
+      "path": "drizzle/0010_colorful_tana_nile.sql",
+      "sha256": "e4b0ce48e48f8d8e23af45a70a29a35e5073535d1ff18b906ef52868554fb1f6"
+    },
+    {
+      "path": "drizzle/0004_steady_vanisher.sql",
+      "sha256": "bbb596d4ff893b749123d6231067cb0f0982514f25212aade07c72660c138dfd"
+    },
+    {
+      "path": "drizzle/0011_flashy_salo.sql",
+      "sha256": "872ffe5ca8c4cbd70e8d94cd0fb7693682edf12ae2a28296ea3c0453278db538"
+    },
+    {
+      "path": "drizzle/0013_normalize_tax_offices.sql",
+      "sha256": "c0861950971e2ca8a261aa5e53c14a6e1bff26270948dcc77c14d1c259570088"
+    },
+    {
+      "path": "drizzle/0007_abandoned_archangel.sql",
+      "sha256": "0da9f74cd64bbba7f8439a1789baafb45fc0fddc0a0dca0959513407d4aaa906"
+    },
+    {
+      "path": "drizzle/0002_soft_shen.sql",
+      "sha256": "331c1caa79f6b69da5e2b4011a7723d4d5fd665034ea7436fe010fd8f94eebd7"
+    },
+    {
+      "path": "drizzle/0012_optimal_giant_man.sql",
+      "sha256": "7efe2e8c3ff959d7f6ed3702410b71a4b2af054a21e9221ef702c5fb7c750247"
+    },
+    {
+      "path": "drizzle/0006_unique_nemesis.sql",
+      "sha256": "f213dcec57cbbafdd67907b93d0569dc0c8706701470ee647da02cfde0465046"
+    },
+    {
+      "path": "drizzle/0014_third_fourth_inspection_plan.sql",
+      "sha256": "87e567e568acd437a7174a884c26ae71364abcc949eec17336cf527b343d0385"
+    },
+    {
+      "path": "drizzle/0001_pink_micromax.sql",
+      "sha256": "74b3329f8084206758dce29dcb964cfd48f46cc64d900e05fd239e8363d5c06f"
+    },
+    {
+      "path": "drizzle/0009_magenta_proudstar.sql",
+      "sha256": "ea16076cc5d9b38b6c06b4c02c2f2ea62ef4f674a5eba474885e8b93725629ad"
+    }
+  ],
+  "external_urls": [
+    "https://api.invoicing.eta.gov.eg",
+    "https://api.preprod.invoicing.eta.gov.eg",
+    "https://app.local",
+    "https://eta.gov.eg/ar/news/aqrar-aldrybt-ly-alqymt-almdaft-yqdm-shhryana-ly-nmwdhj-rqm10",
+    "https://eta.gov.eg/sites/default/files/2024-03/law_no.7-2024.pdf",
+    "https://eta.gov.eg/sites/default/files/2024-03/law_no.96-2015.pdf",
+    "https://eta.gov.eg/sites/default/files/2025-12/mof.decision.no_.420.of_.2025.pdf",
+    "https://eta.gov.eg/sites/default/files/2026-08/law.no_.151.of_.2026.pdf",
+    "https://id.eta.gov.eg",
+    "https://id.preprod.eta.gov.eg",
+    "https://sdk.invoicing.eta.gov.eg/api/01-login-as-taxpayer-system/",
+    "https://wa.me/",
+    "https://www.eta.gov.eg/sites/default/files/2025-02/law_no.6.of_.2025.pdf"
+  ]
+}

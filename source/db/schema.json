@@ -1,0 +1,1290 @@
+{
+  "accessUsers": [
+    {
+      "name": "id",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": true
+    },
+    {
+      "name": "email",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "staffId",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "accessRole",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "active",
+      "type": "INTEGER",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "lastLogin",
+      "type": "TEXT",
+      "notnull": false,
+      "pk": false
+    },
+    {
+      "name": "created",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    }
+  ],
+  "accrualPayments": [
+    {
+      "name": "id",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": true
+    },
+    {
+      "name": "invoiceId",
+      "type": "TEXT",
+      "notnull": false,
+      "pk": false
+    },
+    {
+      "name": "accrualId",
+      "type": "TEXT",
+      "notnull": false,
+      "pk": false
+    },
+    {
+      "name": "amount",
+      "type": "INTEGER",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "date",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "method",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "reference",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "expenseId",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "created",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    }
+  ],
+  "accruals": [
+    {
+      "name": "id",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": true
+    },
+    {
+      "name": "description",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "amount",
+      "type": "INTEGER",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "date",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "due",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "created",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    }
+  ],
+  "activity": [
+    {
+      "name": "id",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": true
+    },
+    {
+      "name": "message",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "created",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    }
+  ],
+  "assignments": [
+    {
+      "name": "id",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": true
+    },
+    {
+      "name": "clientId",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "staffId",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "created",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    }
+  ],
+  "clientDossiers": [
+    {
+      "name": "id",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": true
+    },
+    {
+      "name": "clientId",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "data",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "revision",
+      "type": "INTEGER",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "created",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "updated",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    }
+  ],
+  "clientProfiles": [
+    {
+      "name": "id",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": true
+    },
+    {
+      "name": "clientId",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "data",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "revision",
+      "type": "INTEGER",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "created",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "updated",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    }
+  ],
+  "clientSecrets": [
+    {
+      "name": "id",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": true
+    },
+    {
+      "name": "clientId",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "field",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "encrypted",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "revision",
+      "type": "INTEGER",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "created",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "updated",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    }
+  ],
+  "clients": [
+    {
+      "name": "id",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": true
+    },
+    {
+      "name": "name",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "activity",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "tax",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "registration",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "phone",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "email",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "address",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "notes",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "status",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "created",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "taxOffice",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "taxFile",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "portalEmail",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "nationalId",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    }
+  ],
+  "documents": [
+    {
+      "name": "id",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": true
+    },
+    {
+      "name": "clientId",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "name",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "key",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "size",
+      "type": "INTEGER",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "type",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "created",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "category",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "revision",
+      "type": "INTEGER",
+      "notnull": true,
+      "pk": false
+    }
+  ],
+  "expenses": [
+    {
+      "name": "id",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": true
+    },
+    {
+      "name": "description",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "category",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "amount",
+      "type": "INTEGER",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "date",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "created",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "subcategory",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    }
+  ],
+  "importRuns": [
+    {
+      "name": "id",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": true
+    },
+    {
+      "name": "clientCount",
+      "type": "INTEGER",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "staffCount",
+      "type": "INTEGER",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "created",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    }
+  ],
+  "incomeHistory": [
+    {
+      "name": "id",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": true
+    },
+    {
+      "name": "returnId",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "revision",
+      "type": "INTEGER",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "data",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "calculation",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "actor",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "created",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    }
+  ],
+  "incomeProfiles": [
+    {
+      "name": "id",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": true
+    },
+    {
+      "name": "clientId",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "data",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "revision",
+      "type": "INTEGER",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "created",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    }
+  ],
+  "incomeReturns": [
+    {
+      "name": "id",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": true
+    },
+    {
+      "name": "clientId",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "year",
+      "type": "INTEGER",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "start",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "end",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "data",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "calculation",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "revision",
+      "type": "INTEGER",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "created",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "updated",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    }
+  ],
+  "inspectionCases": [
+    {
+      "name": "id",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": true
+    },
+    {
+      "name": "clientId",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "taxType",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "periodKey",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "staffId",
+      "type": "TEXT",
+      "notnull": false,
+      "pk": false
+    },
+    {
+      "name": "reviewerId",
+      "type": "TEXT",
+      "notnull": false,
+      "pk": false
+    },
+    {
+      "name": "approverId",
+      "type": "TEXT",
+      "notnull": false,
+      "pk": false
+    },
+    {
+      "name": "updateStaffId",
+      "type": "TEXT",
+      "notnull": false,
+      "pk": false
+    },
+    {
+      "name": "taskId",
+      "type": "TEXT",
+      "notnull": false,
+      "pk": false
+    },
+    {
+      "name": "sourceKey",
+      "type": "TEXT",
+      "notnull": false,
+      "pk": false
+    },
+    {
+      "name": "data",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "revision",
+      "type": "INTEGER",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "created",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "updated",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    }
+  ],
+  "inspectionHistory": [
+    {
+      "name": "id",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": true
+    },
+    {
+      "name": "caseId",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "revision",
+      "type": "INTEGER",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "data",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "actor",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "created",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    }
+  ],
+  "invoices": [
+    {
+      "name": "id",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": true
+    },
+    {
+      "name": "clientId",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "description",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "amount",
+      "type": "INTEGER",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "date",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "due",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "created",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "lineItems",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "discount",
+      "type": "INTEGER",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "claimText",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    }
+  ],
+  "payments": [
+    {
+      "name": "id",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": true
+    },
+    {
+      "name": "invoiceId",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "amount",
+      "type": "INTEGER",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "date",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "method",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "reference",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "created",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    }
+  ],
+  "payrollDefaults": [
+    {
+      "name": "id",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": true
+    },
+    {
+      "name": "data",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "revision",
+      "type": "INTEGER",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "created",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    }
+  ],
+  "payrollMonths": [
+    {
+      "name": "id",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": true
+    },
+    {
+      "name": "data",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "revision",
+      "type": "INTEGER",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "paidDate",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "expenseId",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "created",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    }
+  ],
+  "securityLog": [
+    {
+      "name": "id",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": true
+    },
+    {
+      "name": "actor",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "action",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "created",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    }
+  ],
+  "services": [
+    {
+      "name": "id",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": true
+    },
+    {
+      "name": "name",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "unit",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "price",
+      "type": "INTEGER",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "description",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "status",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "created",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    }
+  ],
+  "staff": [
+    {
+      "name": "id",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": true
+    },
+    {
+      "name": "name",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "role",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "phone",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "email",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "created",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "code",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    }
+  ],
+  "tasks": [
+    {
+      "name": "id",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": true
+    },
+    {
+      "name": "title",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "clientId",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "staffId",
+      "type": "TEXT",
+      "notnull": false,
+      "pk": false
+    },
+    {
+      "name": "service",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "due",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "status",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "priority",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "notes",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "created",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    }
+  ],
+  "taxConnections": [
+    {
+      "name": "id",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": true
+    },
+    {
+      "name": "clientId",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "environment",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "loginType",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "erpId",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "encryptedSecret",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "state",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "lastChecked",
+      "type": "TEXT",
+      "notnull": false,
+      "pk": false
+    },
+    {
+      "name": "created",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    }
+  ],
+  "vatProfiles": [
+    {
+      "name": "id",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": true
+    },
+    {
+      "name": "clientId",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "data",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "revision",
+      "type": "INTEGER",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "created",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    }
+  ],
+  "vatReturns": [
+    {
+      "name": "id",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": true
+    },
+    {
+      "name": "clientId",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "start",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "end",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "data",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "revision",
+      "type": "INTEGER",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "created",
+      "type": "TEXT",
+      "notnull": true,
+      "pk": false
+    }
+  ],
+  "officeTemplates": [
+    {
+      "name": "id",
+      "type": "text",
+      "notnull": true,
+      "pk": true
+    },
+    {
+      "name": "sha256",
+      "type": "text",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "data",
+      "type": "text",
+      "notnull": true,
+      "pk": false
+    },
+    {
+      "name": "created",
+      "type": "text",
+      "notnull": true,
+      "pk": false
+    }
+  ]
+}

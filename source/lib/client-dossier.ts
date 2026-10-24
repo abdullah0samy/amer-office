@@ -1,0 +1,8 @@
+import {z} from 'zod';
+export const documentCategories={identity:'البطاقة الشخصية',taxCard:'البطاقة الضريبية',facilitation:'شهادة التيسيرات الضريبية',eInvoice:'شهادة الفاتورة الإلكترونية',vatRegistration:'شهادة التسجيل بالقيمة المضافة',commercialRegister:'السجل التجاري',examination:'مستندات آخر فحص',settlement:'مستندات التسوية',other:'مستندات أخرى'} as const;
+export const categorySchema=z.enum(['identity','taxCard','facilitation','eInvoice','vatRegistration','commercialRegister','examination','settlement','other']);
+const year=z.number().int().min(1900).max(2100);
+export const dossierSchema=z.object({lastExamYear:year.nullable(),lastSettlementYear:year.nullable(),requiredYears:z.array(year).max(200).refine(v=>new Set(v).size===v.length),examReference:z.string().max(500),settlementReference:z.string().max(500),notes:z.string().max(4000)}).strict();
+export type Dossier=z.infer<typeof dossierSchema>;
+export const emptyDossier:Dossier={lastExamYear:null,lastSettlementYear:null,requiredYears:[],examReference:'',settlementReference:'',notes:''};
+export function parseExamYears(text:string){const normalized=text.replace(/[٠-٩۰-۹]/g,c=>String('٠١٢٣٤٥٦٧٨٩'.includes(c)?'٠١٢٣٤٥٦٧٨٩'.indexOf(c):'۰۱۲۳۴۵۶۷۸۹'.indexOf(c))).trim();if(!normalized)return [];const years=new Set<number>();for(const token of normalized.split(/[\s,،;؛]+/).filter(Boolean)){if(!/^\d{4}(-\d{4})?$/.test(token))throw new Error('اكتب السنوات مثل 2020، 2022 أو نطاق 2020-2023');const [first,last=first]=token.split('-').map(Number);if(first<1900||last>2100||last<first)throw new Error('راجع السنوات؛ النطاق من ١٩٠٠ إلى ٢١٠٠');for(let n=first;n<=last;n++)years.add(n);}if(years.size>200)throw new Error('عدد السنوات كبير جدًا');return [...years].sort((a,b)=>a-b);}

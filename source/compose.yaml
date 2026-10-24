@@ -1,0 +1,57 @@
+name: amer-office
+services:
+  postgres:
+    image: postgres:17.10-bookworm@sha256:9b18b78397054fce88a9552e9d5a3ad5bb7fd258c5b3cc1c5028e46373d6ea8f
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:?required}
+      POSTGRES_USER: ${POSTGRES_USER:?required}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?required}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"']
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks: [database]
+    # No host port. Only backend joins this private database network.
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    restart: unless-stopped
+    env_file: ${APP_ENV_FILE:-.env}
+    environment:
+      PORT: 3001
+      DATABASE_URL: ${DATABASE_URL:?required}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    expose: [3001]
+    networks: [database, application]
+    init: true
+    stop_grace_period: 30s
+    read_only: true
+    tmpfs: [/tmp]
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+      args:
+        VITE_API_URL: ${VITE_API_URL:?required}
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+    expose: [3000]
+    networks: [application]
+    init: true
+    read_only: true
+    tmpfs: [/tmp]
+volumes:
+  postgres-data:
+networks:
+  database:
+    internal: true
+  application:

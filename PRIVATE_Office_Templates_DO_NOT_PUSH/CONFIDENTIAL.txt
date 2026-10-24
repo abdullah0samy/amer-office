@@ -1,0 +1,1 @@
+Private operator data containing personal identity information. NEVER upload to GitHub. Import only into an explicitly authorized private environment. See source README Private legacy office templates section. Original bytes preserved. Not used as test data.

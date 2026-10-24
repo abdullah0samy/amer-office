@@ -1,0 +1,3 @@
+2026-10-23: npm run test:docker attempted. Exit 127: docker: not found.
+No images built, no Docker stack started, no Docker/PostgreSQL service tests completed.
+Synthetic configuration removed after attempt. Production untouched.

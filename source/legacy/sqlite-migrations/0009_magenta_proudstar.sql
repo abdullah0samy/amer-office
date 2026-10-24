@@ -1,0 +1,1 @@
+ALTER TABLE `expenses` ADD `subcategory` text DEFAULT '' NOT NULL;

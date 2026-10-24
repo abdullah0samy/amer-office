@@ -1,0 +1,5 @@
+export type Rates={hours:number;invoice:number;newFile:number;exam:number;incorporation:number};
+export type PayEntry={staffId:string;base:number;active:boolean;overtime:number;invoices:number;newFiles:number;exams:number;incorporations:number;procedures:number;advances:number;deductions:number;notes:string};
+export const defaultRates:Rates={hours:240,invoice:500,newFile:20000,exam:25000,incorporation:50000};
+export function calculatePay(e:PayEntry,r:Rates){const hourly=Math.round(e.base/r.hours),extra=Math.round(e.overtime*hourly),invoice=e.invoices*r.invoice,newFile=e.newFiles*r.newFile,exam=e.exams*r.exam,incorporation=e.incorporations*r.incorporation;const bonus=extra+invoice+newFile+exam+incorporation+e.procedures;return {hourly,extra,invoice,newFile,exam,incorporation,bonus,net:e.active?e.base+bonus-e.advances-e.deductions:0};}
+export const blankEntry=(staffId:string,base=0):PayEntry=>({staffId,base,active:true,overtime:0,invoices:0,newFiles:0,exams:0,incorporations:0,procedures:0,advances:0,deductions:0,notes:''});

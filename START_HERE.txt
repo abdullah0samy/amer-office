@@ -1,0 +1,4 @@
+Sanitized source commit: 74335f20512c0bdf84641ea182fe028c40ff721e
+GitHub push failed: no machine authentication. See source/README.md and source/docs/GITHUB-DELIVERY.md.
+Clone included bundle: git clone amer-office-coolify.bundle office-repo
+Docker/native PostgreSQL and live R2/SMTP tests remain required. No production cutover.

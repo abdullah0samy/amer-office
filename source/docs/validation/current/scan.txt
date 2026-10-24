@@ -1,0 +1,6 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> amer-office-coolify@1.1.0 security:scan
+> node scripts/security-scan.mjs
+
+No configured environment files, private-key files, database dumps or recognized credential patterns in source. Heuristic scan only; not proof that every possible secret is absent.

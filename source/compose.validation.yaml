@@ -1,0 +1,20 @@
+# ONLY synthetic validation environment. Never run against real customer databases.
+services:
+  frontend:
+    ports: ['127.0.0.1:3000:3000']
+  backend:
+    ports: ['127.0.0.1:3001:3001']
+  validation:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+      target: build
+    env_file: ${APP_ENV_FILE:-.env.validation}
+    environment:
+      NODE_ENV: test
+      TEST_DATABASE_URL: ${DATABASE_URL}
+    command: [npm, test]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks: [database, application]

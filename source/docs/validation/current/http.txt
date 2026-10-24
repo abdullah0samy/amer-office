@@ -1,0 +1,14 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> amer-office-coolify@1.1.0 test:http
+> node --test tests/http-stack.smoke.mjs
+
+✔ compiled HTTP API + pg wire protocol + private S3 + SMTP + durable restart (3432.720004ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3560.242932

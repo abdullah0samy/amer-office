@@ -1,0 +1,26 @@
+import {canonicalTaxOffice} from '@/lib/tax-offices';
+import {env} from '@/backend/config';
+import {database} from '@/db/raw';
+import {z} from 'zod';
+export const dynamic='force-dynamic';
+const text=z.string().max(2000),id=z.string().uuid();
+const client=z.object({id,name:z.string().trim().min(1).max(200),activity:text,tax:text.max(30),taxOffice:text,taxFile:text,portalEmail:text.max(300),nationalId:text.max(50),registration:text.max(30),phone:text.max(50),email:text.max(200),address:text,notes:text,status:z.enum(['نشط','متوقف'])}).strict();
+const staff=z.object({id,code:z.string().min(1).max(30),name:z.string().min(1).max(200),role:z.string().min(1).max(200)}).strict();
+const payload=z.object({version:z.literal(1),clients:z.array(client).max(1000),staff:z.array(staff).max(100)}).strict();
+async function digest(text:string){return Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(text)))).map(n=>n.toString(16).padStart(2,'0')).join('')}
+async function allowed(req:Request){const key=req.headers.get('X-Office-Import-Key');if(!env.IMPORT_JOB_TOKEN||!env.IMPORT_JOB_DIGEST||!env.IMPORT_JOB_EXPIRES||Date.parse(env.IMPORT_JOB_EXPIRES)<Date.now()||!key)return false;return await digest(key)===await digest(env.IMPORT_JOB_TOKEN)}
+export async function POST(req:Request){if(!await allowed(req))return Response.json({error:'عملية الاستيراد غير مفعّلة.'},{status:403});try{const raw=await req.text();if(raw.length>2000000||await digest(raw)!==env.IMPORT_JOB_DIGEST)return Response.json({error:'هذه البيانات لا تطابق دفعة الاستيراد المعتمدة.'},{status:400});const input=payload.parse(JSON.parse(raw)),db=database(),job=env.IMPORT_JOB_DIGEST!,now=new Date().toISOString();const receipt=await db.prepare('SELECT * FROM importRuns WHERE id=?').bind(job).first<any>();if(receipt)return Response.json({completed:true,alreadyImported:true,clients:receipt.clientCount,staff:receipt.staffCount});
+ const clientIds=new Set(input.clients.map(c=>c.id)),staffIds=new Set(input.staff.map(s=>s.id));if(clientIds.size!==input.clients.length||staffIds.size!==input.staff.length)return Response.json({error:'معرفات مكررة داخل الدفعة'},{status:400});
+ const staffBefore=await db.prepare('SELECT id,name,code FROM staff').all<any>();for(const s of input.staff){const existing=staffBefore.results.find(x=>x.id===s.id);if(existing&&existing.name.trim()!==s.name.trim())return Response.json({error:'تعارض في هوية موظف موجود'},{status:409});if(staffBefore.results.some(x=>x.id!==s.id&&((x.code&&x.code===s.code)||x.name.trim()===s.name.trim())))return Response.json({error:'موظف مكرر يحتاج مطابقة'},{status:409});}
+ const all=await db.prepare('SELECT id,name,tax FROM clients').all<any>();for(const c of input.clients){if(all.results.some(x=>x.id!==c.id&&x.name.trim()===c.name.trim()&&x.tax===c.tax))return Response.json({error:'عميل موجود يحتاج مطابقة قبل الاستيراد'},{status:409});}
+ const statements=input.clients.map(c=>{c.taxOffice=canonicalTaxOffice(c.taxOffice);const fields=Object.keys(c);return db.prepare(`INSERT INTO clients (${fields.join(',')},created) VALUES (${Array(fields.length+1).fill('?').join(',')}) ON CONFLICT(id) DO NOTHING`).bind(...fields.map(f=>(c as any)[f]),now)});
+ statements.push(...input.staff.map(s=>db.prepare('INSERT INTO staff (id,code,name,role,created) VALUES (?,?,?,?,?) ON CONFLICT(id) DO UPDATE SET code=excluded.code,name=excluded.name,role=excluded.role').bind(s.id,s.code,s.name,s.role,now)));
+ statements.push(db.prepare('INSERT INTO importRuns (id,clientCount,staffCount,created) VALUES (?,?,?,?)').bind(job,input.clients.length,input.staff.length,now));
+ statements.push(db.prepare('INSERT INTO securityLog (id,actor,action,created) VALUES (?,?,?,?)').bind(crypto.randomUUID(),env.OFFICE_OWNER_EMAIL||'owner','استيراد شيت العملاء ('+input.clients.length+') وتغذية الموظفين ('+input.staff.length+')',now));
+ await db.batch(statements);
+ const verify=await db.batch([...input.clients.map(c=>db.prepare('SELECT * FROM clients WHERE id=?').bind(c.id)),...input.staff.map(s=>db.prepare('SELECT * FROM staff WHERE id=?').bind(s.id))]);
+ const expected=[...input.clients,...input.staff];const mismatches=expected.filter((r,index)=>{const actual=verify[index].results[0] as any;return !actual||Object.entries(r).some(([k,v])=>actual[k]!==v)}).length;
+ const results=await db.batch([db.prepare('SELECT COUNT(*) AS count FROM clients'),db.prepare('SELECT COUNT(*) AS count FROM staff')]);
+ return Response.json({completed:true,alreadyImported:false,clients:input.clients.length,staff:input.staff.length,verified:expected.length-mismatches,mismatches,totalClients:(results[0].results[0] as any).count,totalStaff:(results[1].results[0] as any).count});
+ }catch(e){console.error('scoped import failed',e instanceof Error?e.message:'unknown');return Response.json({error:'تعذر إتمام دفعة الاستيراد. لم يُحذف أي سجل موجود.'},{status:503})}}
+export async function GET(req:Request){if(!await allowed(req))return Response.json({error:'عملية الاستيراد غير مفعّلة.'},{status:403});try{const r=await database().prepare('SELECT clientCount,staffCount,created FROM importRuns WHERE id=?').bind(env.IMPORT_JOB_DIGEST).first();return Response.json({completed:!!r,receipt:r},{headers:{'Cache-Control':'no-store'}})}catch{return Response.json({error:'غير متاح'},{status:503})}}

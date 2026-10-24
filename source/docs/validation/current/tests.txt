@@ -1,0 +1,191 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> amer-office-coolify@1.1.0 test
+> node --import tsx --test tests/*.test.ts tests/*.test.mjs
+
+✔ individual bands and withdrawn lower bands match law 7/2024 boundary cases (1.134175ms)
+✔ simplified brackets apply whole turnover and exact thresholds (2.604941ms)
+✔ company bridge includes inventory, book/tax depreciation, adjustments and prior losses once (0.381076ms)
+✔ simplified profit and expenses do not reduce turnover tax (0.192816ms)
+✔ special, joining-year and future-year drafts require documented manual review (0.419593ms)
+✔ leap and non-calendar company years are supported; shortened period is guarded (0.14125ms)
+✔ validation rejects stale or invalid losses, excessive crediting and missing receipt (7.535588ms)
+✔ manufacturing inventory includes converted direct cost; services do not hide inventory (0.207598ms)
+{"event":"request","requestId":"f7e3e447-1c31-4085-a247-90c75ac2cec2","method":"POST","path":"/api/auth/login","status":200,"durationMs":97}
+{"event":"request","requestId":"7a1dd6d1-a103-4636-b2c5-88f2cdaeecd6","method":"POST","path":"/api/auth/login","status":200,"durationMs":94}
+{"event":"request","requestId":"692bde9b-6215-44b0-b9f4-692640386001","method":"POST","path":"/api/auth/login","status":200,"durationMs":81}
+✔ PostgreSQL baseline has 29 business tables and required unique/FK indexes; migration repeatable (1653.823755ms)
+{"event":"request","requestId":"f6affa50-bf7e-416a-9a75-af8b56e7a56b","method":"GET","path":"/health","status":200,"durationMs":2}
+{"event":"request","requestId":"83ea3df2-7405-4f4a-8136-f65b1c3279c7","method":"GET","path":"/no-route","status":404,"durationMs":2}
+{"event":"request","requestId":"8adc1c85-eafd-4d16-a9ec-21ea74ee99c4","method":"GET","path":"/api/records","status":401,"durationMs":1}
+{"event":"request","requestId":"6e5654da-724a-4a33-9ca4-5e483be537fd","method":"GET","path":"/api/records","status":401,"durationMs":1}
+✔ migration refuses changed historical checksums (10.136236ms)
+✔ health is ready, unknown routes fail, unauthorized and forged identity denied (7.69468ms)
+{"event":"request","requestId":"e119133b-ed55-4d65-8dc0-3fd59eb072d8","method":"POST","path":"/api/auth/login","status":401,"durationMs":80}
+{"event":"request","requestId":"12fda74e-5d85-4343-a1a9-0387ff538a85","method":"POST","path":"/api/auth/login","status":200,"durationMs":86}
+{"event":"request","requestId":"27fa3e03-9c2b-4acd-9690-f021a75ed6da","method":"GET","path":"/api/auth/me","status":200,"durationMs":3}
+{"event":"request","requestId":"4c8d3c97-e61f-4e2c-8cf3-35367b0c2a67","method":"POST","path":"/api/auth/logout","status":200,"durationMs":5}
+{"event":"request_error","requestId":"3a2da3af-e778-4df4-8f2f-0dc068067c09","path":"/api/auth/me","errorCode":"application_error"}
+{"event":"request","requestId":"3a2da3af-e778-4df4-8f2f-0dc068067c09","method":"GET","path":"/api/auth/me","status":401,"durationMs":3}
+{"event":"request","requestId":"acc3382a-9be0-4ebd-a3e1-50ec22f1f152","method":"GET","path":"/api/records","status":403,"durationMs":0}
+{"event":"request","requestId":"b252f7e7-0118-46c1-a0d9-c98b5998b596","method":"GET","path":"/api/records","status":200,"durationMs":12}
+{"event":"request","requestId":"496b435e-f9f0-42d4-885c-05748cf0b282","method":"POST","path":"/api/auth/logout","status":403,"durationMs":0}
+{"event":"request","requestId":"a035cd5f-d70a-44d1-bae1-9283292ab042","method":"GET","path":"/api/access","status":403,"durationMs":3}
+{"event":"request","requestId":"c8c3346e-d91d-4b60-89fd-830881be6f37","method":"GET","path":"/api/payroll","status":403,"durationMs":3}
+{"event":"request","requestId":"2bf2549d-2d2c-4e72-b4bb-90c202b8ed97","method":"GET","path":"/api/records","status":200,"durationMs":14}
+{"event":"request","requestId":"ee0a640c-c89c-49b5-941f-564db4dec7cb","method":"POST","path":"/api/records","status":403,"durationMs":4}
+{"event":"request","requestId":"60f86759-1ceb-4b84-ad54-de3c10c22307","method":"POST","path":"/api/records","status":404,"durationMs":6}
+{"event":"request","requestId":"0985e4b9-e9c9-48c3-9ce1-d364975ac27e","method":"POST","path":"/api/records","status":200,"durationMs":10}
+{"event":"request","requestId":"1528bf93-a289-45a8-aa15-03f5009e5794","method":"POST","path":"/api/records","status":200,"durationMs":4}
+{"event":"request","requestId":"857aacc6-fe68-4a17-8603-dd1331acbc61","method":"POST","path":"/api/records","status":200,"durationMs":4}
+{"event":"request","requestId":"240ed89c-56cf-45a8-bcef-9529a658d402","method":"DELETE","path":"/api/records","status":200,"durationMs":4}
+{"event":"request","requestId":"4eb4034b-7505-42e8-b3a6-e9823b5196a2","method":"POST","path":"/api/records","status":200,"durationMs":8}
+{"event":"request","requestId":"7c763c67-acc4-41f3-8553-8be57616b41b","method":"POST","path":"/api/records","status":200,"durationMs":5}
+{"event":"request","requestId":"592e66a0-5338-4c42-84c0-0cec59e8a2b4","method":"POST","path":"/api/records","status":403,"durationMs":3}
+{"event":"request","requestId":"531682d3-a1ba-4945-82fc-40aec6931b1a","method":"POST","path":"/api/records","status":200,"durationMs":7}
+{"event":"request","requestId":"1391d8dc-c3e5-46e8-8da8-36ef8783b3ee","method":"POST","path":"/api/records","status":200,"durationMs":5}
+{"event":"request","requestId":"3fd947ea-49a9-4da1-9b33-16a9096d4e0d","method":"POST","path":"/api/records","status":400,"durationMs":3}
+{"event":"request","requestId":"6263bfb6-abc9-446e-94a4-9b02c35c35de","method":"POST","path":"/api/records","status":400,"durationMs":4}
+{"event":"request","requestId":"41efaad5-4d4c-4d20-be7d-df90494772cd","method":"POST","path":"/api/records","status":200,"durationMs":5}
+{"event":"request","requestId":"85477aa6-8e8f-40db-a3a7-f070c8c17cc7","method":"POST","path":"/api/records","status":400,"durationMs":10}
+{"event":"request","requestId":"e0ca4b5f-a1ce-4ac1-be3e-4d49c560d043","method":"POST","path":"/api/accruals","status":200,"durationMs":10}
+{"event":"request","requestId":"1fa5c4b7-18c1-495e-b614-7677001efc03","method":"POST","path":"/api/accruals","status":200,"durationMs":4}
+{"event":"request","requestId":"4936ad97-e21a-4079-9276-3ee09034913c","method":"DELETE","path":"/api/records","status":409,"durationMs":3}
+{"event":"request","requestId":"9067e06b-9efc-410e-8f0b-975720bc2f02","method":"POST","path":"/api/accruals","status":409,"durationMs":6}
+{"event":"request","requestId":"da0ca9ba-923d-47d4-9354-c2623e17e007","method":"DELETE","path":"/api/accruals","status":200,"durationMs":5}
+{"event":"request","requestId":"94c353c1-9c59-4df4-b08e-691e88a40499","method":"POST","path":"/api/accruals","status":200,"durationMs":4}
+{"event":"request","requestId":"61245ec7-e96c-4739-9d50-04fd2f6daeda","method":"POST","path":"/api/accruals","status":200,"durationMs":6}
+{"event":"request","requestId":"582cd444-3280-444e-961a-a5576af2aa94","method":"DELETE","path":"/api/accruals","status":409,"durationMs":3}
+{"event":"request","requestId":"541a89d3-4248-4f9d-b944-b8c262030d66","method":"DELETE","path":"/api/accruals","status":200,"durationMs":4}
+{"event":"request","requestId":"efff052a-d2a8-4ff0-84d9-0605f017c8ee","method":"DELETE","path":"/api/accruals","status":200,"durationMs":12}
+✔ login failure, secure cookie, logout and revoked session (179.110776ms)
+✔ CORS only configured frontend; cross-origin/no-origin writes blocked (13.165847ms)
+✔ account and manager restrictions preserved; employee cannot access financial data (25.631805ms)
+✔ CRUD clients, staff, service, tasks; tax-office normalization and FK failure rollback (50.780892ms)
+✔ invoice discounts minor-unit arithmetic, partial payments, overpayment and paid edit protection (20.848349ms)
+✔ competing payments never overdraw remaining invoice balance (11.166657ms)
+✔ 30 percent accrued expense: replay idempotency, linked cash expense and cancellation (30.895794ms)
+✔ manual accrual CRUD and partial settlement (30.612483ms)
+{"event":"request","requestId":"18c56614-41ba-482b-85e2-aaed88134fde","method":"POST","path":"/api/client-profile","status":200,"durationMs":9}
+{"event":"request","requestId":"43311f5c-535b-499a-b61b-9c8e48f8ef44","method":"POST","path":"/api/client-profile","status":409,"durationMs":5}
+{"event":"request","requestId":"af6907e5-f90c-4fef-ad3e-3f98f6b7f31d","method":"POST","path":"/api/client-profile","status":403,"durationMs":3}
+{"event":"request","requestId":"4da3ae4d-c2ef-4028-bdaf-cd7567d9d220","method":"POST","path":"/api/client-profile","status":200,"durationMs":4}
+✔ encrypted client profile secrets use revision guard and owner-only reveal (22.747079ms)
+{"event":"request","requestId":"44ec5de7-29e5-4ccd-9909-18b6f7c4cb79","method":"POST","path":"/api/documents","status":200,"durationMs":40}
+{"event":"request","requestId":"fcb10eaa-7c4b-4434-a676-4cc7a91f9079","method":"GET","path":"/api/documents","status":200,"durationMs":9}
+{"event":"request","requestId":"acf04a3b-07d7-4877-a635-d02adce5c4eb","method":"GET","path":"/api/documents","status":403,"durationMs":3}
+{"event":"request","requestId":"9989658a-fe17-47aa-81a8-6777d7f105ed","method":"POST","path":"/api/documents","status":400,"durationMs":3}
+{"event":"request","requestId":"fdbed161-90bc-43ce-b313-67e7a8f63e53","method":"GET","path":"/api/documents","status":401,"durationMs":1}
+{"event":"request","requestId":"66255b1f-9d09-40b6-b683-9f2fc8afcb23","method":"DELETE","path":"/api/documents","status":200,"durationMs":6}
+✔ S3 SDK private document upload/download metadata, wrong owner and MIME rejection (72.920869ms)
+{"event":"request","requestId":"139e9ce7-2b80-4386-9ced-01fb324b3098","method":"GET","path":"/api/documents","status":404,"durationMs":6}
+{"event":"document_upload_failed","code":"storage_or_database_error"}
+{"event":"request","requestId":"02abc8cd-2d17-4819-b193-5ce9239838eb","method":"POST","path":"/api/documents","status":503,"durationMs":181}
+{"event":"request","requestId":"e7519eff-6f9d-4b62-bac3-e4c42c8b08c5","method":"DELETE","path":"/api/documents","status":200,"durationMs":5}
+{"event":"request","requestId":"b9991a7a-ef8e-4b46-b545-bc7deaed4480","method":"GET","path":"/api/office-templates","status":403,"durationMs":3}
+{"event":"request","requestId":"a60b41ef-5204-4eca-b162-58028892788c","method":"GET","path":"/api/office-templates","status":200,"durationMs":3}
+{"event":"request","requestId":"90f41e63-1b31-486c-89d8-cfb776cf3e7a","method":"GET","path":"/api/office-templates","status":200,"durationMs":10}
+{"event":"request","requestId":"291d76d9-4be8-404e-84bc-9ec7b8a1e8a9","method":"GET","path":"/api/office-templates","status":200,"durationMs":31}
+✔ missing object returns 404 and failed upload leaves no database metadata (200.562472ms)
+✔ office templates Word, image and multi-document archive protected and downloadable (47.451516ms)
+{"event":"request","requestId":"91da4f51-2d69-4d9f-91d3-b35781936f6c","method":"POST","path":"/api/auth/recovery","status":200,"durationMs":167}
+{"event":"request","requestId":"276a180e-202d-4a00-a4b1-69e62bd730a7","method":"POST","path":"/api/auth/reset","status":200,"durationMs":81}
+{"event":"request","requestId":"c1ca30fe-3215-4946-8ad7-5f621d83f2e9","method":"POST","path":"/api/auth/reset","status":400,"durationMs":4}
+{"event":"request_error","requestId":"0bf75c1a-c838-415c-9451-2cfb051238b4","path":"/api/auth/me","errorCode":"application_error"}
+{"event":"request","requestId":"0bf75c1a-c838-415c-9451-2cfb051238b4","method":"GET","path":"/api/auth/me","status":401,"durationMs":1}
+{"event":"request","requestId":"94c58c98-6d8a-466a-9adb-1ba082b52b0c","method":"POST","path":"/api/auth/login","status":401,"durationMs":85}
+{"event":"request","requestId":"8ee3242d-ccea-48f2-967b-8a4d39ce6405","method":"POST","path":"/api/auth/login","status":200,"durationMs":82}
+✔ SMTP controlled delivery and one-time email recovery revoke old sessions (421.958596ms)
+{"event":"request","requestId":"d93d0c46-7ab3-48a6-ad48-b79928ace998","method":"POST","path":"/api/auth/login","status":200,"durationMs":80}
+{"event":"request_error","requestId":"b45828d9-1857-4898-b915-f3cfc2811278","path":"/api/auth/me","errorCode":"application_error"}
+{"event":"request","requestId":"b45828d9-1857-4898-b915-f3cfc2811278","method":"GET","path":"/api/auth/me","status":401,"durationMs":2}
+{"event":"request","requestId":"ae0ab2a6-7f46-4424-bfb9-472fccbc97ee","method":"POST","path":"/api/auth/login","status":200,"durationMs":85}
+{"event":"request_error","requestId":"24b28a00-9e75-43e4-a739-b549834410e7","path":"/api/auth/me","errorCode":"application_error"}
+{"event":"request","requestId":"24b28a00-9e75-43e4-a739-b549834410e7","method":"GET","path":"/api/auth/me","status":403,"durationMs":2}
+{"event":"request","requestId":"01704963-51a2-4ae6-bb3b-5d6a6fd39adf","method":"POST","path":"/api/auth/login","status":401,"durationMs":85}
+{"event":"request","requestId":"c41e35cb-6e02-4723-9349-b5769a62d7e2","method":"POST","path":"/api/auth/login","status":401,"durationMs":81}
+{"event":"request","requestId":"3519d0c4-3631-4cad-9697-eacd9ef27f10","method":"POST","path":"/api/auth/login","status":401,"durationMs":77}
+{"event":"request","requestId":"1e3cb87c-2465-464d-a263-718c5b4b5d85","method":"POST","path":"/api/auth/login","status":401,"durationMs":84}
+{"event":"request","requestId":"c068624f-f335-42e3-b6ce-791f492f83d8","method":"POST","path":"/api/auth/login","status":401,"durationMs":86}
+{"event":"request","requestId":"90f7fd7f-374a-40ff-b837-3067c6a445b5","method":"POST","path":"/api/auth/login","status":401,"durationMs":84}
+{"event":"request","requestId":"8fd6d18d-c034-4629-b05a-bc9ee422feda","method":"POST","path":"/api/auth/login","status":401,"durationMs":82}
+{"event":"request","requestId":"82b7e964-e9b6-493b-b1bf-36f9223d58d4","method":"POST","path":"/api/auth/login","status":401,"durationMs":81}
+{"event":"request","requestId":"f78aea70-6b62-4c52-9f67-ad87c92dfbba","method":"POST","path":"/api/auth/login","status":401,"durationMs":83}
+{"event":"request","requestId":"ba414c92-e89d-4bdf-a8b0-728d299abab8","method":"POST","path":"/api/auth/login","status":401,"durationMs":79}
+{"event":"request","requestId":"f4ac6176-3c40-41e2-9ade-fce2956ad593","method":"POST","path":"/api/auth/login","status":429,"durationMs":2}
+{"event":"request","requestId":"0fae0da9-380e-4bab-a960-c0fa373a7595","method":"POST","path":"/api/auth/login","status":429,"durationMs":1}
+✔ expired sessions, disabled staff and brute-force account throttle (997.33896ms)
+✔ business transaction rolls back state and audit on error response (2.717757ms)
+{"event":"request","requestId":"c558de31-067b-4c3b-b4fc-aedc1b7db304","method":"POST","path":"/api/payroll","status":200,"durationMs":7}
+{"event":"request","requestId":"54a99f64-8098-438f-933d-b3232b918770","method":"POST","path":"/api/payroll","status":200,"durationMs":7}
+{"event":"request","requestId":"4c801e35-287f-4ea3-8ebc-e7ffc9498002","method":"DELETE","path":"/api/records","status":409,"durationMs":3}
+{"event":"request","requestId":"9e2bafbd-860f-44e4-bfe3-db14be233ac6","method":"POST","path":"/api/payroll","status":409,"durationMs":4}
+{"event":"request","requestId":"88fda24a-ea09-4906-91d0-5abb1f82e7f8","method":"POST","path":"/api/payroll","status":200,"durationMs":7}
+{"event":"request","requestId":"97adb28a-38cb-412d-b0d4-815d16fdda4a","method":"POST","path":"/api/vat","status":200,"durationMs":6}
+{"event":"request","requestId":"47b46fc9-198e-4da1-bbe9-7a97d157c760","method":"POST","path":"/api/vat","status":200,"durationMs":10}
+{"event":"request","requestId":"34538e27-6719-4386-82c1-75c072bd691f","method":"POST","path":"/api/vat","status":400,"durationMs":6}
+{"event":"request","requestId":"04d0e274-1e75-4c2c-90b4-be0fff9f40d1","method":"POST","path":"/api/vat","status":200,"durationMs":6}
+{"event":"request","requestId":"7279ea06-ae1b-44db-ae39-ce0eefab3cdc","method":"POST","path":"/api/vat","status":409,"durationMs":4}
+{"event":"request","requestId":"22dac90d-6118-4823-a589-29d530f4841a","method":"POST","path":"/api/vat","status":200,"durationMs":4}
+{"event":"request","requestId":"b66a8703-5c01-4145-b646-da878067d970","method":"POST","path":"/api/vat","status":200,"durationMs":6}
+{"event":"request","requestId":"e6586819-35a5-4110-af5b-0ea302d6ab5c","method":"POST","path":"/api/income","status":200,"durationMs":6}
+{"event":"request","requestId":"97b4ce36-ddc4-428c-be2f-cb5b4c3b9753","method":"POST","path":"/api/income","status":200,"durationMs":10}
+{"event":"request","requestId":"f1d4a846-63eb-4759-95ec-f2cf2db77013","method":"POST","path":"/api/income","status":409,"durationMs":5}
+{"event":"request","requestId":"edcbda90-c08a-4594-83ca-37b3368c8838","method":"POST","path":"/api/income","status":200,"durationMs":5}
+{"event":"request","requestId":"5055a5aa-86ce-44b9-b655-64369222701c","method":"GET","path":"/api/income","status":200,"durationMs":15}
+{"event":"request","requestId":"d09cbada-5a0a-4456-8ded-99a2b598e1a4","method":"POST","path":"/api/client-dossier","status":200,"durationMs":6}
+{"event":"request","requestId":"56114aa1-ad7b-4fa0-8e17-47727e72deb7","method":"POST","path":"/api/inspections","status":200,"durationMs":9}
+{"event":"request","requestId":"bc317e48-c4d0-4603-9f6d-3f6c308bb229","method":"POST","path":"/api/inspections","status":200,"durationMs":7}
+{"event":"request","requestId":"116d86d4-70cc-48d0-b224-cbf0c3d3aa46","method":"POST","path":"/api/inspections","status":409,"durationMs":3}
+{"event":"request","requestId":"9246a808-f90d-4b7c-9a0e-4043d11d6db3","method":"POST","path":"/api/inspections","status":200,"durationMs":10}
+{"event":"request","requestId":"9357f392-b811-40ef-8971-2b88c7867bb6","method":"GET","path":"/api/inspections","status":200,"durationMs":3}
+{"event":"request","requestId":"e994d63f-7aab-4bd6-8f6c-1f31a07ec13b","method":"POST","path":"/api/client-profile","status":200,"durationMs":8}
+{"event":"request","requestId":"f8ed58da-6be7-4212-bce1-a740b0e90487","method":"POST","path":"/api/client-profile","status":409,"durationMs":4}
+{"event":"request","requestId":"32ba402d-0c6c-4ab9-abef-d139b2ee8e36","method":"GET","path":"/api/client-profile","status":200,"durationMs":3}
+✔ offline import + row-count/hash/financial-total verification; invalid FK rollback (794.82934ms)
+✔ payroll defaults/month revision, linked expense update and draft cancellation (31.501574ms)
+✔ VAT regular/simplified periods, totals, overlap and revision checks (43.914001ms)
+✔ income settings, annual return history, revision conflict and duplicate year (45.078891ms)
+✔ inspection case/task/history, duplicate task guard and dossier close synchronization (42.219414ms)
+{"event":"request","requestId":"702d7d8f-9f47-46d4-bae0-959be9e4d3ff","method":"POST","path":"/api/tax","status":200,"durationMs":7}
+{"event":"request","requestId":"e3aad436-08ca-4db8-8ac0-681745be2c23","method":"GET","path":"/api/tax","status":200,"durationMs":3}
+✔ client metadata revision and tax API secret storage without contacting authority (26.091392ms)
+{"event":"request","requestId":"3a280fde-e10b-4850-8f13-4e41aa989777","method":"POST","path":"/api/documents","status":200,"durationMs":18}
+{"event":"request","requestId":"c64e6ac5-1e08-4cdf-a468-34e818fa753f","method":"GET","path":"/api/documents","status":404,"durationMs":5}
+{"event":"request","requestId":"e717ad88-e418-462e-baef-50118faa2db2","method":"GET","path":"/api/documents","status":200,"durationMs":4}
+{"event":"request","requestId":"2ef37090-110c-46b0-8e59-069c3f6f5bb7","method":"DELETE","path":"/api/documents","status":200,"durationMs":7}
+{"event":"storage_delete_retry"}
+{"event":"request","requestId":"e97f07ba-4ec4-4351-b876-3cb0e8b81e5f","method":"POST","path":"/api/office-templates","status":403,"durationMs":4}
+{"event":"request","requestId":"b4c2c852-0918-4b88-a6f9-8cd0339cc505","method":"POST","path":"/api/office-templates","status":403,"durationMs":3}
+✔ object backup export/restore verifies byte checksum; tampered restore rejected (310.423728ms)
+{"event":"request","requestId":"5f6f095e-93d3-4488-ab43-864a5d125b41","method":"POST","path":"/api/office-templates","status":201,"durationMs":11}
+{"event":"request","requestId":"efc64cca-6df2-473a-b791-cf49358567a4","method":"POST","path":"/api/office-templates","status":200,"durationMs":4}
+{"event":"request","requestId":"01ea5713-badc-4b91-9bf3-d2a22f432e67","method":"GET","path":"/api/office-templates","status":200,"durationMs":4}
+{"event":"request","requestId":"d4f64822-9934-4712-a885-cc9d2acb3691","method":"GET","path":"/api/office-templates","status":200,"durationMs":3}
+{"event":"request","requestId":"ab6ab31c-4d11-4670-b4ac-68a623647235","method":"GET","path":"/api/office-templates","status":200,"durationMs":2}
+{"event":"request_error","requestId":"eb058dff-4e96-4733-8cd5-02857a3c560e","path":"/api/office-templates","errorCode":"application_error"}
+{"event":"request","requestId":"eb058dff-4e96-4733-8cd5-02857a3c560e","method":"GET","path":"/api/office-templates","status":503,"durationMs":4}
+{"event":"request","requestId":"b2866433-15d5-449f-942e-77d7bae1f407","method":"GET","path":"/api/office-templates","status":200,"durationMs":3}
+✔ latest office template upload is owner-only, persistent, downloadable and idempotent (62.081869ms)
+{"event":"transaction_commit_uncertain"}
+{"event":"request_error","requestId":"9b58bcd2-9d1a-4c23-98cd-cadaed37272d","path":"/api/documents","errorCode":"application_error"}
+{"event":"request","requestId":"9b58bcd2-9d1a-4c23-98cd-cadaed37272d","method":"POST","path":"/api/documents","status":503,"durationMs":6}
+{"event":"request","requestId":"19d9657a-537a-424e-8f10-140aff5fcb78","method":"GET","path":"/api/documents","status":200,"durationMs":10}
+{"event":"request","requestId":"5b7eae2a-6a7e-40e2-90fa-abfc699a9742","method":"DELETE","path":"/api/documents","status":200,"durationMs":6}
+✔ uncertain PostgreSQL COMMIT does not delete uploaded objects or corrupt metadata (31.161919ms)
+{"event":"request","requestId":"20888986-e5a1-435b-810a-a3061f2c99e8","method":"GET","path":"/api/office-templates","status":200,"durationMs":3}
+✔ operator private-template import preserves legacy IDs and is idempotent without public assets (24.622084ms)
+✔ SQL lexer preserves literals/comments and quoted names, parameter numbering and camelCase (1.203859ms)
+✔ password salt, length bounds, verification and production cookie policy (361.249333ms)
+✔ object keys reject traversal and upload content must match type/extension (1.761918ms)
+✔ claim total/discount and 30 percent accrued cost preserve exact minor-unit rules (0.7538ms)
+✔ company claims preserve recipient, CIB banking text and editable DOCX XML (13.751608ms)
+✔ export reader rejects missing tables and unsafe integer values (9.231241ms)
+ℹ tests 42
+ℹ suites 0
+ℹ pass 42
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6712.070923

@@ -1,0 +1,15 @@
+{
+  "name": "amer-office-backend-runtime",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0 <25"
+  },
+  "dependencies": {
+    "pg": "8.16.3",
+    "@aws-sdk/client-s3": "3.1156.0",
+    "nodemailer": "10.2.1",
+    "zod": "4.6.7"
+  }
+}

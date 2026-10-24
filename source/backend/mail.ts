@@ -1,0 +1,4 @@
+import nodemailer from 'nodemailer';
+import {required} from './config';
+export function mailTransport(){return nodemailer.createTransport({host:required('SMTP_HOST'),port:Number(required('SMTP_PORT')),secure:process.env.SMTP_SECURE==='true',requireTLS:process.env.SMTP_REQUIRE_TLS==='true',auth:process.env.SMTP_USER?{user:process.env.SMTP_USER,pass:required('SMTP_PASSWORD')}:undefined,tls:{rejectUnauthorized:true},connectionTimeout:10000,socketTimeout:15000});}
+export async function sendRecovery(email:string,token:string){const link=new URL('/reset-password',required('APP_ORIGIN'));link.hash='token='+token;await mailTransport().sendMail({from:required('SMTP_FROM'),to:email,subject:'عامر رشاد — تفعيل الحساب أو استعادة كلمة المرور',text:`استخدم الرابط التالي خلال 30 دقيقة لتأكيد بريدك وتعيين كلمة المرور. إذا لم تطلب ذلك فتجاهل الرسالة.\n${link}`});}

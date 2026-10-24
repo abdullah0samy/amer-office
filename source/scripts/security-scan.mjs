@@ -1,0 +1,6 @@
+import {readdir,readFile} from 'node:fs/promises';
+import path from 'node:path';
+const skip=new Set(['node_modules','.git','dist','dist-backend','.next','.vinext']);const violations=[];
+const secrets=[/-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/,/\bAKIA[A-Z0-9]{16}\b/,/\bgh[pousr]_[A-Za-z0-9]{30,}\b/,/\bgithub_pat_[A-Za-z0-9_]{50,}\b/,/\bsk-(?:proj-)?[A-Za-z0-9_-]{40,}\b/];
+async function scan(dir){for(const entry of await readdir(dir,{withFileTypes:true})){if(skip.has(entry.name))continue;const name=path.join(dir,entry.name);if(entry.isDirectory()){await scan(name);continue;}if(entry.name==='.env.example')continue;if(/^\.env(?:\.|$)/.test(entry.name)||/\.pem$|\.key$|\.p12$|\.sqlite3?$|\.dump$/.test(entry.name)){violations.push(name+': excluded sensitive file');continue;}if(!/\.(ts|tsx|mjs|json|md|ya?ml|sql|sh)$/.test(entry.name))continue;const text=await readFile(name,'utf8');for(const re of secrets)if(re.test(text))violations.push(name+': possible credential pattern');}}
+await scan('.');if(violations.length){console.error(violations.join('\n'));process.exitCode=1;}else console.log('No configured environment files, private-key files, database dumps or recognized credential patterns in source. Heuristic scan only; not proof that every possible secret is absent.');

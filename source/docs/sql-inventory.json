@@ -1,0 +1,1304 @@
+[
+  {
+    "file": "backend/admin.ts",
+    "line": 8,
+    "method": "query",
+    "sqlExpression": "'BEGIN'"
+  },
+  {
+    "file": "backend/admin.ts",
+    "line": 8,
+    "method": "query",
+    "sqlExpression": "'INSERT INTO \"authCredentials\" (email,\"passwordHash\",verified,created) VALUES ($1,$2,1,$3) ON CONFLICT(email) DO UPDATE SET \"passwordHash\"=excluded.\"passwordHash\",verified=1'"
+  },
+  {
+    "file": "backend/admin.ts",
+    "line": 8,
+    "method": "query",
+    "sqlExpression": "'DELETE FROM \"authSessions\" WHERE email=$1'"
+  },
+  {
+    "file": "backend/admin.ts",
+    "line": 8,
+    "method": "query",
+    "sqlExpression": "'COMMIT'"
+  },
+  {
+    "file": "backend/admin.ts",
+    "line": 8,
+    "method": "query",
+    "sqlExpression": "'ROLLBACK'"
+  },
+  {
+    "file": "backend/auth.ts",
+    "line": 9,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO authRateLimits (id,count,expires) VALUES (?,1,?) ON CONFLICT(id) DO UPDATE SET count=authRateLimits.count+1 RETURNING count'"
+  },
+  {
+    "file": "backend/auth.ts",
+    "line": 13,
+    "method": "prepare",
+    "sqlExpression": "'DELETE FROM authSessions WHERE tokenHash=?'"
+  },
+  {
+    "file": "backend/auth.ts",
+    "line": 18,
+    "method": "prepare",
+    "sqlExpression": "'SELECT passwordHash,verified FROM authCredentials WHERE email=?'"
+  },
+  {
+    "file": "backend/auth.ts",
+    "line": 24,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO authSessions (tokenHash,email,expires,created) VALUES (?,?,?,?)'"
+  },
+  {
+    "file": "backend/auth.ts",
+    "line": 29,
+    "method": "prepare",
+    "sqlExpression": "'DELETE FROM authRecovery WHERE email=?'"
+  },
+  {
+    "file": "backend/auth.ts",
+    "line": 29,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO authRecovery (tokenHash,email,expires,created) VALUES (?,?,?,?)'"
+  },
+  {
+    "file": "backend/auth.ts",
+    "line": 29,
+    "method": "prepare",
+    "sqlExpression": "'DELETE FROM authRecovery WHERE tokenHash=?'"
+  },
+  {
+    "file": "backend/auth.ts",
+    "line": 34,
+    "method": "prepare",
+    "sqlExpression": "'SELECT email FROM authRecovery WHERE tokenHash=? AND expires>?'"
+  },
+  {
+    "file": "backend/auth.ts",
+    "line": 35,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO authCredentials (email,passwordHash,verified,created) VALUES (?,?,1,?) ON CONFLICT(email) DO UPDATE SET passwordHash=excluded.passwordHash,verified=1'"
+  },
+  {
+    "file": "backend/auth.ts",
+    "line": 36,
+    "method": "prepare",
+    "sqlExpression": "'DELETE FROM authRecovery WHERE email=?'"
+  },
+  {
+    "file": "backend/auth.ts",
+    "line": 36,
+    "method": "prepare",
+    "sqlExpression": "'DELETE FROM authSessions WHERE email=?'"
+  },
+  {
+    "file": "backend/cleanup.ts",
+    "line": 4,
+    "method": "query",
+    "sqlExpression": "'BEGIN'"
+  },
+  {
+    "file": "backend/cleanup.ts",
+    "line": 4,
+    "method": "query",
+    "sqlExpression": "'SELECT pg_try_advisory_xact_lock(709412033) AS locked'"
+  },
+  {
+    "file": "backend/cleanup.ts",
+    "line": 4,
+    "method": "query",
+    "sqlExpression": "'ROLLBACK'"
+  },
+  {
+    "file": "backend/cleanup.ts",
+    "line": 5,
+    "method": "query",
+    "sqlExpression": "'SELECT key FROM \"storageDeletions\" ORDER BY created LIMIT 20 FOR UPDATE SKIP LOCKED'"
+  },
+  {
+    "file": "backend/cleanup.ts",
+    "line": 6,
+    "method": "query",
+    "sqlExpression": "'DELETE FROM \"storageDeletions\" WHERE key=$1'"
+  },
+  {
+    "file": "backend/cleanup.ts",
+    "line": 6,
+    "method": "query",
+    "sqlExpression": "'UPDATE \"storageDeletions\" SET attempts=attempts+1 WHERE key=$1'"
+  },
+  {
+    "file": "backend/cleanup.ts",
+    "line": 7,
+    "method": "query",
+    "sqlExpression": "`DELETE FROM \"${table}\" WHERE expires<$1`"
+  },
+  {
+    "file": "backend/cleanup.ts",
+    "line": 8,
+    "method": "query",
+    "sqlExpression": "'COMMIT'"
+  },
+  {
+    "file": "backend/cleanup.ts",
+    "line": 8,
+    "method": "query",
+    "sqlExpression": "'ROLLBACK'"
+  },
+  {
+    "file": "backend/data-tools.ts",
+    "line": 17,
+    "method": "query",
+    "sqlExpression": "`SELECT * FROM ${quote(table)}`"
+  },
+  {
+    "file": "backend/data-tools.ts",
+    "line": 18,
+    "method": "query",
+    "sqlExpression": "'BEGIN'"
+  },
+  {
+    "file": "backend/data-tools.ts",
+    "line": 18,
+    "method": "query",
+    "sqlExpression": "'SELECT pg_advisory_xact_lock(709412031)'"
+  },
+  {
+    "file": "backend/data-tools.ts",
+    "line": 18,
+    "method": "query",
+    "sqlExpression": "'SET CONSTRAINTS ALL DEFERRED'"
+  },
+  {
+    "file": "backend/data-tools.ts",
+    "line": 18,
+    "method": "query",
+    "sqlExpression": "`SELECT 1 FROM ${quote(table)} LIMIT 1`"
+  },
+  {
+    "file": "backend/data-tools.ts",
+    "line": 19,
+    "method": "query",
+    "sqlExpression": "`INSERT INTO ${quote(table)} (${cols.map(c=>quote(c.name)).join(',')}) VALUES (${cols.map((_,i)=>'$'+(i+1)).join(',')})`"
+  },
+  {
+    "file": "backend/data-tools.ts",
+    "line": 20,
+    "method": "query",
+    "sqlExpression": "'SET CONSTRAINTS ALL IMMEDIATE'"
+  },
+  {
+    "file": "backend/data-tools.ts",
+    "line": 20,
+    "method": "query",
+    "sqlExpression": "'COMMIT'"
+  },
+  {
+    "file": "backend/data-tools.ts",
+    "line": 21,
+    "method": "query",
+    "sqlExpression": "'ROLLBACK'"
+  },
+  {
+    "file": "backend/handler.ts",
+    "line": 22,
+    "method": "query",
+    "sqlExpression": "'SELECT 1'"
+  },
+  {
+    "file": "backend/handler.ts",
+    "line": 22,
+    "method": "query",
+    "sqlExpression": "'SELECT count(*)::int AS n FROM office_schema_migrations'"
+  },
+  {
+    "file": "backend/migrate.ts",
+    "line": 5,
+    "method": "query",
+    "sqlExpression": "'BEGIN'"
+  },
+  {
+    "file": "backend/migrate.ts",
+    "line": 6,
+    "method": "query",
+    "sqlExpression": "'SELECT pg_advisory_xact_lock(709412032)'"
+  },
+  {
+    "file": "backend/migrate.ts",
+    "line": 7,
+    "method": "query",
+    "sqlExpression": "'CREATE TABLE IF NOT EXISTS office_schema_migrations (name TEXT PRIMARY KEY, checksum TEXT NOT NULL, applied_at TIMESTAMPTZ NOT NULL DEFAULT now())'"
+  },
+  {
+    "file": "backend/migrate.ts",
+    "line": 8,
+    "method": "query",
+    "sqlExpression": "'SELECT name,checksum FROM office_schema_migrations'"
+  },
+  {
+    "file": "backend/migrate.ts",
+    "line": 12,
+    "method": "query",
+    "sqlExpression": "sql"
+  },
+  {
+    "file": "backend/migrate.ts",
+    "line": 12,
+    "method": "query",
+    "sqlExpression": "'INSERT INTO office_schema_migrations(name,checksum) VALUES ($1,$2)'"
+  },
+  {
+    "file": "backend/migrate.ts",
+    "line": 13,
+    "method": "query",
+    "sqlExpression": "'COMMIT'"
+  },
+  {
+    "file": "backend/migrate.ts",
+    "line": 14,
+    "method": "query",
+    "sqlExpression": "'ROLLBACK'"
+  },
+  {
+    "file": "backend/transfer-objects.ts",
+    "line": 10,
+    "method": "query",
+    "sqlExpression": "'SELECT id,key,size,type FROM documents ORDER BY id'"
+  },
+  {
+    "file": "backend/verify-data.ts",
+    "line": 3,
+    "method": "query",
+    "sqlExpression": "'BEGIN ISOLATION LEVEL REPEATABLE READ READ ONLY'"
+  },
+  {
+    "file": "backend/verify-data.ts",
+    "line": 3,
+    "method": "query",
+    "sqlExpression": "'COMMIT'"
+  },
+  {
+    "file": "backend/routes/access/route.ts",
+    "line": 7,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id,email,staffId,accessRole,active,lastLogin,created FROM accessUsers ORDER BY created DESC'"
+  },
+  {
+    "file": "backend/routes/access/route.ts",
+    "line": 7,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM assignments'"
+  },
+  {
+    "file": "backend/routes/access/route.ts",
+    "line": 7,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM securityLog ORDER BY created DESC LIMIT 100'"
+  },
+  {
+    "file": "backend/routes/access/route.ts",
+    "line": 8,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id FROM staff WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/access/route.ts",
+    "line": 8,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id FROM accessUsers WHERE (email=? OR staffId=?) AND id<>?'"
+  },
+  {
+    "file": "backend/routes/access/route.ts",
+    "line": 8,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id FROM accessUsers WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/access/route.ts",
+    "line": 8,
+    "method": "prepare",
+    "sqlExpression": "'UPDATE accessUsers SET email=?,staffId=?,accessRole=?,active=?,lastLogin=NULL WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/access/route.ts",
+    "line": 8,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO accessUsers (id,email,staffId,accessRole,active,created) VALUES (?,?,?,?,?,?)'"
+  },
+  {
+    "file": "backend/routes/access/route.ts",
+    "line": 9,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id FROM clients WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/access/route.ts",
+    "line": 9,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id FROM staff WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/access/route.ts",
+    "line": 9,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id FROM assignments WHERE clientId=? AND staffId=?'"
+  },
+  {
+    "file": "backend/routes/access/route.ts",
+    "line": 9,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO assignments (id,clientId,staffId,created) VALUES (?,?,?,?)'"
+  },
+  {
+    "file": "backend/routes/access/route.ts",
+    "line": 10,
+    "method": "prepare",
+    "sqlExpression": "'DELETE FROM assignments WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/accruals/route.ts",
+    "line": 12,
+    "method": "prepare",
+    "sqlExpression": "'UPDATE accruals SET description=?,amount=?,date=?,due=? WHERE id=? AND ?>=COALESCE((SELECT SUM(amount) FROM accrualPayments WHERE accrualId=?),0)'"
+  },
+  {
+    "file": "backend/routes/accruals/route.ts",
+    "line": 12,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO accruals (id,description,amount,date,due,created) VALUES (?,?,?,?,?,?)'"
+  },
+  {
+    "file": "backend/routes/accruals/route.ts",
+    "line": 14,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM accrualPayments WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/accruals/route.ts",
+    "line": 15,
+    "method": "prepare",
+    "sqlExpression": "`SELECT * FROM ${table} WHERE id=?`"
+  },
+  {
+    "file": "backend/routes/accruals/route.ts",
+    "line": 17,
+    "method": "prepare",
+    "sqlExpression": "`INSERT INTO accrualPayments (id,invoiceId,accrualId,amount,date,method,reference,expenseId,created) SELECT ?,?,?,?,?,?,?,?,? FROM ${table} s WHERE s.id=? ${snapshot} AND ? <= ?-COALESCE((SELECT SUM(p.amount) FROM accrualPayments p WHERE p.${col}=s.id),0)`"
+  },
+  {
+    "file": "backend/routes/accruals/route.ts",
+    "line": 18,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO expenses (id,description,category,subcategory,amount,date,created) SELECT expenseId,?,? ,\\'\\',amount,date,created FROM accrualPayments WHERE id=? AND expenseId=?'"
+  },
+  {
+    "file": "backend/routes/accruals/route.ts",
+    "line": 19,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO securityLog (id,actor,action,created) SELECT ?,?,?,? WHERE EXISTS (SELECT 1 FROM accrualPayments WHERE id=? AND expenseId=?)'"
+  },
+  {
+    "file": "backend/routes/accruals/route.ts",
+    "line": 23,
+    "method": "prepare",
+    "sqlExpression": "'DELETE FROM expenses WHERE id IN (SELECT expenseId FROM accrualPayments WHERE id=?)'"
+  },
+  {
+    "file": "backend/routes/accruals/route.ts",
+    "line": 23,
+    "method": "prepare",
+    "sqlExpression": "'DELETE FROM accrualPayments WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/accruals/route.ts",
+    "line": 23,
+    "method": "prepare",
+    "sqlExpression": "'DELETE FROM accruals WHERE id=? AND NOT EXISTS (SELECT 1 FROM accrualPayments WHERE accrualId=?)'"
+  },
+  {
+    "file": "backend/routes/client-dossier/route.ts",
+    "line": 7,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id FROM clients WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/client-dossier/route.ts",
+    "line": 7,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM clientDossiers WHERE clientId=?'"
+  },
+  {
+    "file": "backend/routes/client-dossier/route.ts",
+    "line": 7,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id,clientId,name,size,type,category,revision,created FROM documents WHERE clientId=? ORDER BY created DESC'"
+  },
+  {
+    "file": "backend/routes/client-dossier/route.ts",
+    "line": 8,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id FROM clients WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/client-dossier/route.ts",
+    "line": 8,
+    "method": "prepare",
+    "sqlExpression": "'SELECT revision FROM clientDossiers WHERE clientId=?'"
+  },
+  {
+    "file": "backend/routes/client-dossier/route.ts",
+    "line": 8,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO clientDossiers (id,clientId,data,revision,created,updated) VALUES (?,?,?,1,?,?) ON CONFLICT(clientId) DO UPDATE SET data=excluded.data,revision=clientDossiers.revision+1,updated=excluded.updated WHERE clientDossiers.revision=?'"
+  },
+  {
+    "file": "backend/routes/client-profile/route.ts",
+    "line": 11,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id FROM clients WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/client-profile/route.ts",
+    "line": 11,
+    "method": "prepare",
+    "sqlExpression": "'SELECT data,revision FROM clientProfiles WHERE clientId=?'"
+  },
+  {
+    "file": "backend/routes/client-profile/route.ts",
+    "line": 11,
+    "method": "prepare",
+    "sqlExpression": "'SELECT field,revision,updated FROM clientSecrets WHERE clientId=?'"
+  },
+  {
+    "file": "backend/routes/client-profile/route.ts",
+    "line": 12,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id FROM clients WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/client-profile/route.ts",
+    "line": 14,
+    "method": "prepare",
+    "sqlExpression": "'SELECT encrypted FROM clientSecrets WHERE clientId=? AND field=?'"
+  },
+  {
+    "file": "backend/routes/client-profile/route.ts",
+    "line": 14,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO securityLog (id,actor,action,created) VALUES (?,?,?,?)'"
+  },
+  {
+    "file": "backend/routes/client-profile/route.ts",
+    "line": 15,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO clientSecrets (id,clientId,field,encrypted,revision,created,updated) SELECT ?,?,?,?,1,?,? WHERE ?=0 OR EXISTS(SELECT 1 FROM clientSecrets WHERE clientId=? AND field=?) ON CONFLICT(clientId,field) DO UPDATE SET encrypted=excluded.encrypted,revision=clientSecrets.revision+1,updated=excluded.updated WHERE clientSecrets.revision=?'"
+  },
+  {
+    "file": "backend/routes/client-profile/route.ts",
+    "line": 15,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO securityLog (id,actor,action,created) SELECT ?,?,?,? WHERE EXISTS(SELECT 1 FROM clientSecrets WHERE clientId=? AND field=? AND encrypted=?)'"
+  },
+  {
+    "file": "backend/routes/client-profile/route.ts",
+    "line": 16,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO clientProfiles (id,clientId,data,revision,created,updated) SELECT ?,?,?,1,?,? WHERE ?=0 OR EXISTS(SELECT 1 FROM clientProfiles WHERE clientId=?) ON CONFLICT(clientId) DO UPDATE SET data=excluded.data,revision=clientProfiles.revision+1,updated=excluded.updated WHERE clientProfiles.revision=?'"
+  },
+  {
+    "file": "backend/routes/client-profile/route.ts",
+    "line": 16,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO securityLog (id,actor,action,created) SELECT ?,?,?,? WHERE EXISTS(SELECT 1 FROM clientProfiles WHERE clientId=? AND revision=? AND data=? AND updated=?)'"
+  },
+  {
+    "file": "backend/routes/client-profile/route.ts",
+    "line": 18,
+    "method": "prepare",
+    "sqlExpression": "'DELETE FROM clientSecrets WHERE clientId=? AND field=? AND revision=?'"
+  },
+  {
+    "file": "backend/routes/client-profile/route.ts",
+    "line": 18,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO securityLog (id,actor,action,created) VALUES (?,?,?,?)'"
+  },
+  {
+    "file": "backend/routes/documents/route.ts",
+    "line": 8,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id FROM clients WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/documents/route.ts",
+    "line": 8,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO documents (id,clientId,name,key,size,type,created,category) VALUES (?,?,?,?,?,?,?,?)'"
+  },
+  {
+    "file": "backend/routes/documents/route.ts",
+    "line": 9,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM documents WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/documents/route.ts",
+    "line": 10,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM documents WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/documents/route.ts",
+    "line": 10,
+    "method": "prepare",
+    "sqlExpression": "'SELECT data FROM inspectionCases UNION ALL SELECT data FROM inspectionHistory'"
+  },
+  {
+    "file": "backend/routes/documents/route.ts",
+    "line": 10,
+    "method": "prepare",
+    "sqlExpression": "\"SELECT r.id FROM incomeReturns r, jsonb_array_elements_text(r.data::jsonb->'documents') j(value) WHERE j.value=? UNION SELECT h.id FROM incomeHistory h, jsonb_array_elements_text(h.data::jsonb->'documents') j(value) WHERE j.value=? LIMIT 1\""
+  },
+  {
+    "file": "backend/routes/documents/route.ts",
+    "line": 10,
+    "method": "prepare",
+    "sqlExpression": "'DELETE FROM documents WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/documents/route.ts",
+    "line": 10,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO storageDeletions (key,created) VALUES (?,?) ON CONFLICT(key) DO NOTHING'"
+  },
+  {
+    "file": "backend/routes/documents/route.ts",
+    "line": 12,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id,clientId FROM documents WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/documents/route.ts",
+    "line": 12,
+    "method": "prepare",
+    "sqlExpression": "'UPDATE documents SET category=?,revision=revision+1 WHERE id=? AND revision=?'"
+  },
+  {
+    "file": "backend/routes/import/route.ts",
+    "line": 12,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM importRuns WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/import/route.ts",
+    "line": 14,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id,name,code FROM staff'"
+  },
+  {
+    "file": "backend/routes/import/route.ts",
+    "line": 15,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id,name,tax FROM clients'"
+  },
+  {
+    "file": "backend/routes/import/route.ts",
+    "line": 16,
+    "method": "prepare",
+    "sqlExpression": "`INSERT INTO clients (${fields.join(',')},created) VALUES (${Array(fields.length+1).fill('?').join(',')}) ON CONFLICT(id) DO NOTHING`"
+  },
+  {
+    "file": "backend/routes/import/route.ts",
+    "line": 17,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO staff (id,code,name,role,created) VALUES (?,?,?,?,?) ON CONFLICT(id) DO UPDATE SET code=excluded.code,name=excluded.name,role=excluded.role'"
+  },
+  {
+    "file": "backend/routes/import/route.ts",
+    "line": 18,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO importRuns (id,clientCount,staffCount,created) VALUES (?,?,?,?)'"
+  },
+  {
+    "file": "backend/routes/import/route.ts",
+    "line": 19,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO securityLog (id,actor,action,created) VALUES (?,?,?,?)'"
+  },
+  {
+    "file": "backend/routes/import/route.ts",
+    "line": 21,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM clients WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/import/route.ts",
+    "line": 21,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM staff WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/import/route.ts",
+    "line": 23,
+    "method": "prepare",
+    "sqlExpression": "'SELECT COUNT(*) AS count FROM clients'"
+  },
+  {
+    "file": "backend/routes/import/route.ts",
+    "line": 23,
+    "method": "prepare",
+    "sqlExpression": "'SELECT COUNT(*) AS count FROM staff'"
+  },
+  {
+    "file": "backend/routes/import/route.ts",
+    "line": 26,
+    "method": "prepare",
+    "sqlExpression": "'SELECT clientCount,staffCount,created FROM importRuns WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/income/route.ts",
+    "line": 8,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM incomeProfiles WHERE clientId=?'"
+  },
+  {
+    "file": "backend/routes/income/route.ts",
+    "line": 8,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM incomeReturns WHERE clientId=? ORDER BY year DESC'"
+  },
+  {
+    "file": "backend/routes/income/route.ts",
+    "line": 8,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id,start,end,data FROM vatReturns WHERE clientId=? ORDER BY start'"
+  },
+  {
+    "file": "backend/routes/income/route.ts",
+    "line": 8,
+    "method": "prepare",
+    "sqlExpression": "'SELECT data FROM vatProfiles WHERE clientId=?'"
+  },
+  {
+    "file": "backend/routes/income/route.ts",
+    "line": 8,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id,name FROM documents WHERE clientId=? ORDER BY created DESC'"
+  },
+  {
+    "file": "backend/routes/income/route.ts",
+    "line": 8,
+    "method": "prepare",
+    "sqlExpression": "'SELECT h.id,h.returnId,h.revision,h.created,h.actor,h.data,h.calculation FROM incomeHistory h JOIN incomeReturns r ON r.id=h.returnId WHERE r.clientId=? ORDER BY h.created DESC LIMIT 200'"
+  },
+  {
+    "file": "backend/routes/income/route.ts",
+    "line": 9,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id FROM clients WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/income/route.ts",
+    "line": 9,
+    "method": "prepare",
+    "sqlExpression": "'SELECT revision FROM incomeProfiles WHERE clientId=?'"
+  },
+  {
+    "file": "backend/routes/income/route.ts",
+    "line": 9,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO incomeProfiles (id,clientId,data,revision,created) VALUES (?,?,?,1,?) ON CONFLICT(clientId) DO UPDATE SET data=excluded.data,revision=incomeProfiles.revision+1 WHERE incomeProfiles.revision=?'"
+  },
+  {
+    "file": "backend/routes/income/route.ts",
+    "line": 10,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM incomeReturns WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/income/route.ts",
+    "line": 10,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id FROM incomeProfiles WHERE clientId=?'"
+  },
+  {
+    "file": "backend/routes/income/route.ts",
+    "line": 11,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id FROM documents WHERE clientId=?'"
+  },
+  {
+    "file": "backend/routes/income/route.ts",
+    "line": 12,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO incomeReturns (id,clientId,year,start,end,data,calculation,revision,created,updated) SELECT ?,?,?,?,?,?,?,1,?,? WHERE NOT EXISTS (SELECT 1 FROM incomeReturns WHERE clientId=? AND year=? AND id<>?) ON CONFLICT(id) DO UPDATE SET data=excluded.data,calculation=excluded.calculation,revision=incomeReturns.revision+1,updated=excluded.updated WHERE incomeReturns.revision=? AND incomeReturns.clientId=excluded.clientId'"
+  },
+  {
+    "file": "backend/routes/income/route.ts",
+    "line": 12,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO incomeHistory (id,returnId,revision,data,calculation,actor,created) SELECT ?,id,revision,data,calculation,?,? FROM incomeReturns WHERE id=? AND clientId=? AND revision=? AND data=? ON CONFLICT(returnId,revision) DO NOTHING'"
+  },
+  {
+    "file": "backend/routes/inspections/route.ts",
+    "line": 12,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM inspectionCases WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/inspections/route.ts",
+    "line": 12,
+    "method": "prepare",
+    "sqlExpression": "'SELECT revision,data,actor,created FROM inspectionHistory WHERE caseId=? ORDER BY revision DESC'"
+  },
+  {
+    "file": "backend/routes/inspections/route.ts",
+    "line": 13,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM inspectionCases ORDER BY updated DESC'"
+  },
+  {
+    "file": "backend/routes/inspections/route.ts",
+    "line": 13,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id,name,tax FROM clients'"
+  },
+  {
+    "file": "backend/routes/inspections/route.ts",
+    "line": 13,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id,code,name FROM staff'"
+  },
+  {
+    "file": "backend/routes/inspections/route.ts",
+    "line": 16,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM inspectionCases WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/inspections/route.ts",
+    "line": 16,
+    "method": "prepare",
+    "sqlExpression": "\"INSERT INTO tasks (id,title,clientId,staffId,service,due,status,priority,notes,created) SELECT ?,?,clientId,staffId,'فحص وتسويات ضريبية',?,'لم تبدأ',?,?,? FROM inspectionCases WHERE id=? AND revision=? AND taskId IS NULL\""
+  },
+  {
+    "file": "backend/routes/inspections/route.ts",
+    "line": 17,
+    "method": "prepare",
+    "sqlExpression": "'UPDATE inspectionCases SET taskId=?,revision=revision+1,updated=? WHERE id=? AND revision=? AND taskId IS NULL AND EXISTS(SELECT 1 FROM tasks WHERE id=?)'"
+  },
+  {
+    "file": "backend/routes/inspections/route.ts",
+    "line": 18,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO inspectionHistory (id,caseId,revision,data,actor,created) SELECT ?,id,revision,data,?,? FROM inspectionCases WHERE id=? AND taskId=?'"
+  },
+  {
+    "file": "backend/routes/inspections/route.ts",
+    "line": 19,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO securityLog (id,actor,action,created) SELECT ?,?,?,? WHERE EXISTS(SELECT 1 FROM tasks WHERE id=?)'"
+  },
+  {
+    "file": "backend/routes/inspections/route.ts",
+    "line": 23,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id,tax FROM clients'"
+  },
+  {
+    "file": "backend/routes/inspections/route.ts",
+    "line": 23,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id,code FROM staff'"
+  },
+  {
+    "file": "backend/routes/inspections/route.ts",
+    "line": 26,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM inspectionCases WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/inspections/route.ts",
+    "line": 27,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id FROM clients WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/inspections/route.ts",
+    "line": 28,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id FROM staff WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/inspections/route.ts",
+    "line": 29,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id FROM documents WHERE id=? AND clientId=?'"
+  },
+  {
+    "file": "backend/routes/inspections/route.ts",
+    "line": 31,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM clientDossiers WHERE clientId=?'"
+  },
+  {
+    "file": "backend/routes/inspections/route.ts",
+    "line": 33,
+    "method": "prepare",
+    "sqlExpression": "`UPDATE inspectionCases SET taxType=?,periodKey=?,staffId=?,reviewerId=?,approverId=?,updateStaffId=?,data=?,revision=revision+1,updated=? WHERE id=? AND revision=?${guard}`"
+  },
+  {
+    "file": "backend/routes/inspections/route.ts",
+    "line": 33,
+    "method": "prepare",
+    "sqlExpression": "`INSERT INTO inspectionCases (id,clientId,taxType,periodKey,staffId,reviewerId,approverId,updateStaffId,sourceKey,data,revision,created,updated) SELECT ?,?,?,?,?,?,?,?,?,?,1,?,? WHERE 1=1${guard}`"
+  },
+  {
+    "file": "backend/routes/inspections/route.ts",
+    "line": 34,
+    "method": "prepare",
+    "sqlExpression": "`INSERT INTO inspectionHistory (id,caseId,revision,data,actor,created) SELECT ?,?,?,?,?,? WHERE ${condition}`"
+  },
+  {
+    "file": "backend/routes/inspections/route.ts",
+    "line": 34,
+    "method": "prepare",
+    "sqlExpression": "`INSERT INTO securityLog (id,actor,action,created) SELECT ?,?,?,? WHERE ${condition}`"
+  },
+  {
+    "file": "backend/routes/inspections/route.ts",
+    "line": 35,
+    "method": "prepare",
+    "sqlExpression": "`INSERT INTO clientDossiers (id,clientId,data,revision,created,updated) SELECT ?,?,?,1,?,? WHERE ${condition} ON CONFLICT(clientId) DO UPDATE SET data=excluded.data,revision=clientDossiers.revision+1,updated=excluded.updated WHERE clientDossiers.revision=?`"
+  },
+  {
+    "file": "backend/routes/payroll/route.ts",
+    "line": 14,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id FROM staff'"
+  },
+  {
+    "file": "backend/routes/payroll/route.ts",
+    "line": 16,
+    "method": "prepare",
+    "sqlExpression": "\"SELECT * FROM payrollDefaults WHERE id='default'\""
+  },
+  {
+    "file": "backend/routes/payroll/route.ts",
+    "line": 16,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM payrollMonths ORDER BY id DESC'"
+  },
+  {
+    "file": "backend/routes/payroll/route.ts",
+    "line": 18,
+    "method": "prepare",
+    "sqlExpression": "\"INSERT INTO payrollDefaults (id,data,revision,created) VALUES ('default',?,1,?) ON CONFLICT(id) DO UPDATE SET data=excluded.data,revision=payrollDefaults.revision+1 WHERE payrollDefaults.revision=?\""
+  },
+  {
+    "file": "backend/routes/payroll/route.ts",
+    "line": 21,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM payrollMonths WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/payroll/route.ts",
+    "line": 22,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO payrollMonths (id,data,revision,paidDate,expenseId,created) VALUES (?,?,1,?,?,?) ON CONFLICT(id) DO UPDATE SET data=excluded.data,paidDate=excluded.paidDate,revision=payrollMonths.revision+1 WHERE payrollMonths.revision=?'"
+  },
+  {
+    "file": "backend/routes/payroll/route.ts",
+    "line": 23,
+    "method": "prepare",
+    "sqlExpression": "\"INSERT INTO expenses (id,description,category,subcategory,amount,date,created) SELECT ?,?,?,?,?,?,? FROM payrollMonths WHERE id=? AND revision=? AND data=? AND paidDate<>'' ON CONFLICT(id) DO UPDATE SET description=excluded.description,category=excluded.category,subcategory=excluded.subcategory,amount=excluded.amount,date=excluded.date\""
+  },
+  {
+    "file": "backend/routes/payroll/route.ts",
+    "line": 24,
+    "method": "prepare",
+    "sqlExpression": "\"DELETE FROM expenses WHERE id=? AND EXISTS (SELECT 1 FROM payrollMonths WHERE id=? AND revision=? AND data=? AND paidDate='')\""
+  },
+  {
+    "file": "backend/routes/payroll/route.ts",
+    "line": 28,
+    "method": "prepare",
+    "sqlExpression": "\"INSERT INTO payrollDefaults (id,data,revision,created) VALUES ('default',?,1,?) ON CONFLICT(id) DO NOTHING\""
+  },
+  {
+    "file": "backend/routes/payroll/route.ts",
+    "line": 28,
+    "method": "prepare",
+    "sqlExpression": "\"SELECT data FROM payrollDefaults WHERE id='default'\""
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 24,
+    "method": "prepare",
+    "sqlExpression": "'SELECT DISTINCT c.id,c.name,c.activity,c.taxOffice,c.taxFile,c.tax,c.registration,c.phone,c.email,c.address,c.status,c.created FROM clients c WHERE c.id IN (SELECT clientId FROM assignments WHERE staffId=? UNION SELECT clientId FROM tasks WHERE staffId=?) ORDER BY c.created DESC'"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 25,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id,code,name,role,phone,email,created FROM staff WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 26,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM tasks WHERE staffId=? ORDER BY created DESC'"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 27,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM invoices WHERE FALSE'"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 28,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM payments WHERE FALSE'"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 28,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM expenses WHERE FALSE'"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 28,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM documents WHERE clientId IN (SELECT clientId FROM assignments WHERE staffId=? UNION SELECT clientId FROM tasks WHERE staffId=?) ORDER BY created DESC'"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 29,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM activity WHERE FALSE'"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 29,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM services WHERE FALSE'"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 29,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM accruals WHERE FALSE'"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 29,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM accrualPayments WHERE FALSE'"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 30,
+    "method": "prepare",
+    "sqlExpression": "n==='expenses'?'SELECT e.*,EXISTS(SELECT 1 FROM payrollMonths p WHERE p.expenseId=e.id) AS payrollLinked,EXISTS(SELECT 1 FROM accrualPayments a WHERE a.expenseId=e.id) AS accrualLinked FROM expenses e ORDER BY e.created DESC':`SELECT * FROM ${n} ORDER BY created DESC ${n==='activity'?'LIMIT 40':''}`"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 31,
+    "method": "prepare",
+    "sqlExpression": "'UPDATE accessUsers SET lastLogin=? WHERE email=? AND (lastLogin IS NULL OR lastLogin<?)'"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 33,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM tasks WHERE id=? AND staffId=?'"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 33,
+    "method": "prepare",
+    "sqlExpression": "'UPDATE tasks SET status=?,notes=? WHERE id=? AND staffId=?'"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 33,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id FROM payrollMonths WHERE expenseId=?'"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 33,
+    "method": "prepare",
+    "sqlExpression": "`SELECT id FROM ${kind} WHERE id=?`"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 34,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id FROM accrualPayments WHERE expenseId=?'"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 38,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM invoices WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 43,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id FROM clients WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 44,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id FROM staff WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 45,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO activity (id,message,created) VALUES (?,?,?)'"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 48,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO payments (id,invoiceId,amount,date,method,reference,created) SELECT ?,?,?,?,?,?,? FROM invoices i WHERE i.id=? AND ? <= i.amount-COALESCE((SELECT SUM(p.amount) FROM payments p WHERE p.invoiceId=i.id),0)'"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 49,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO activity (id,message,created) SELECT ?,?,? WHERE EXISTS (SELECT 1 FROM payments WHERE id=?)'"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 50,
+    "method": "prepare",
+    "sqlExpression": "'SELECT COALESCE(SUM(amount),0) AS paid FROM payments WHERE invoiceId=?'"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 50,
+    "method": "prepare",
+    "sqlExpression": "'SELECT clientId FROM invoices WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 51,
+    "method": "prepare",
+    "sqlExpression": "`UPDATE ${kind} SET ${keys.map(k=>`${k}=?`).join(',')} WHERE id=? ${kind==='invoices'?'AND ? >= COALESCE((SELECT SUM(amount) FROM payments WHERE invoiceId=?),0) AND ? >= COALESCE((SELECT SUM(amount) FROM accrualPayments WHERE invoiceId=?),0) AND (clientId=? OR NOT EXISTS (SELECT 1 FROM accrualPayments WHERE invoiceId=?))':''}`"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 51,
+    "method": "prepare",
+    "sqlExpression": "`INSERT INTO ${kind} (id,${keys.join(',')},created) VALUES (${Array(keys.length+2).fill('?').join(',')})`"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 53,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id FROM accrualPayments WHERE expenseId=?'"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 53,
+    "method": "prepare",
+    "sqlExpression": "'SELECT data FROM payrollDefaults UNION ALL SELECT data FROM payrollMonths'"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 53,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id FROM payrollMonths WHERE expenseId=?'"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 53,
+    "method": "prepare",
+    "sqlExpression": "`SELECT id FROM ${table} WHERE ${col}=? LIMIT 1`"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 53,
+    "method": "prepare",
+    "sqlExpression": "`DELETE FROM ${kind} WHERE id=?`"
+  },
+  {
+    "file": "backend/routes/records/route.ts",
+    "line": 53,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO activity (id,message,created) VALUES (?,?,?)'"
+  },
+  {
+    "file": "backend/routes/tax/route.ts",
+    "line": 8,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id,clientId,environment,loginType,erpId,state,lastChecked,created FROM taxConnections ORDER BY created DESC'"
+  },
+  {
+    "file": "backend/routes/tax/route.ts",
+    "line": 9,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id,tax FROM clients WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/tax/route.ts",
+    "line": 9,
+    "method": "prepare",
+    "sqlExpression": "\"INSERT INTO taxConnections (id,clientId,environment,loginType,erpId,encryptedSecret,state,created) VALUES (?,?,?,?,?,?,'لم يُختبر',?) ON CONFLICT(clientId) DO UPDATE SET environment=excluded.environment,loginType=excluded.loginType,erpId=excluded.erpId,encryptedSecret=excluded.encryptedSecret,state='لم يُختبر',lastChecked=NULL\""
+  },
+  {
+    "file": "backend/routes/tax/route.ts",
+    "line": 10,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM taxConnections WHERE clientId=?'"
+  },
+  {
+    "file": "backend/routes/tax/route.ts",
+    "line": 10,
+    "method": "prepare",
+    "sqlExpression": "\"UPDATE taxConnections SET state='نجح الاتصال',lastChecked=? WHERE clientId=?\""
+  },
+  {
+    "file": "backend/routes/tax/route.ts",
+    "line": 10,
+    "method": "prepare",
+    "sqlExpression": "\"UPDATE taxConnections SET state='تعذر الاتصال',lastChecked=? WHERE clientId=?\""
+  },
+  {
+    "file": "backend/routes/tax/route.ts",
+    "line": 12,
+    "method": "prepare",
+    "sqlExpression": "'DELETE FROM taxConnections WHERE clientId=?'"
+  },
+  {
+    "file": "backend/routes/vat/route.ts",
+    "line": 7,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM vatProfiles WHERE clientId=?'"
+  },
+  {
+    "file": "backend/routes/vat/route.ts",
+    "line": 7,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM vatReturns WHERE clientId=? ORDER BY start DESC'"
+  },
+  {
+    "file": "backend/routes/vat/route.ts",
+    "line": 8,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id FROM clients WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/vat/route.ts",
+    "line": 9,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO vatProfiles (id,clientId,data,revision,created) VALUES (?,?,?,1,?) ON CONFLICT(clientId) DO UPDATE SET data=excluded.data,revision=vatProfiles.revision+1 WHERE vatProfiles.revision=?'"
+  },
+  {
+    "file": "backend/routes/vat/route.ts",
+    "line": 10,
+    "method": "prepare",
+    "sqlExpression": "'SELECT * FROM vatReturns WHERE id=?'"
+  },
+  {
+    "file": "backend/routes/vat/route.ts",
+    "line": 10,
+    "method": "prepare",
+    "sqlExpression": "'SELECT data FROM vatProfiles WHERE clientId=?'"
+  },
+  {
+    "file": "backend/routes/vat/route.ts",
+    "line": 11,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id FROM vatReturns WHERE clientId=? AND id<>? AND start<=? AND end>=?'"
+  },
+  {
+    "file": "backend/routes/vat/route.ts",
+    "line": 11,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO vatReturns (id,clientId,start,end,data,revision,created) SELECT ?,?,?,?,?,1,? WHERE NOT EXISTS (SELECT 1 FROM vatReturns WHERE clientId=? AND id<>? AND start<=? AND end>=?) ON CONFLICT(id) DO UPDATE SET data=excluded.data,start=excluded.start,end=excluded.end,revision=vatReturns.revision+1 WHERE vatReturns.revision=? AND vatReturns.clientId=excluded.clientId'"
+  },
+  {
+    "file": "lib/office-auth.ts",
+    "line": 7,
+    "method": "prepare",
+    "sqlExpression": "'SELECT a.*,s.name FROM accessUsers a JOIN staff s ON s.id=a.staffId WHERE a.email=? AND a.active=1'"
+  },
+  {
+    "file": "lib/office-auth.ts",
+    "line": 8,
+    "method": "prepare",
+    "sqlExpression": "'SELECT email FROM authSessions WHERE tokenHash=? AND expires>?'"
+  },
+  {
+    "file": "lib/office-auth.ts",
+    "line": 11,
+    "method": "prepare",
+    "sqlExpression": "'SELECT id FROM assignments WHERE clientId=? AND staffId=? UNION SELECT id FROM tasks WHERE clientId=? AND staffId=? LIMIT 1'"
+  },
+  {
+    "file": "lib/office-auth.ts",
+    "line": 14,
+    "method": "prepare",
+    "sqlExpression": "'INSERT INTO securityLog (id,actor,action,created) VALUES (?,?,?,?)'"
+  },
+  {
+    "file": "db/raw.ts",
+    "line": 18,
+    "method": "query",
+    "sqlExpression": "postgresSQL(this.sql)"
+  },
+  {
+    "file": "db/raw.ts",
+    "line": 24,
+    "method": "query",
+    "sqlExpression": "'BEGIN'"
+  },
+  {
+    "file": "db/raw.ts",
+    "line": 24,
+    "method": "query",
+    "sqlExpression": "'COMMIT'"
+  },
+  {
+    "file": "db/raw.ts",
+    "line": 24,
+    "method": "query",
+    "sqlExpression": "'ROLLBACK'"
+  },
+  {
+    "file": "db/raw.ts",
+    "line": 33,
+    "method": "query",
+    "sqlExpression": "write?'BEGIN':'BEGIN ISOLATION LEVEL REPEATABLE READ'"
+  },
+  {
+    "file": "db/raw.ts",
+    "line": 33,
+    "method": "query",
+    "sqlExpression": "'SELECT pg_advisory_xact_lock(709412031)'"
+  },
+  {
+    "file": "db/raw.ts",
+    "line": 35,
+    "method": "query",
+    "sqlExpression": "r.status>=400?'ROLLBACK':'COMMIT'"
+  },
+  {
+    "file": "db/raw.ts",
+    "line": 36,
+    "method": "query",
+    "sqlExpression": "'ROLLBACK'"
+  }
+]

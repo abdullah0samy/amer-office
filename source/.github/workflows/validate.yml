@@ -1,0 +1,31 @@
+name: Validate independent migration
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  node-and-docker:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.22.1
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run build
+        env:
+          VITE_API_URL: https://office-api.amerrashad.com
+      - run: npm test
+      - run: npm run test:runtime
+      - run: npm run test:http
+      - run: npm audit --omit=dev --audit-level=high
+      - run: npm run test:docker
+      - if: always()
+        run: docker compose --project-name office-migration-validation --env-file .env.validation -f compose.yaml -f compose.validation.yaml logs --tail=100
+        env:
+          APP_ENV_FILE: .env.validation

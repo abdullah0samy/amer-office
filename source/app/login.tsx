@@ -1,0 +1,9 @@
+'use client';
+import {useState} from 'react';
+import {apiFetch} from '@/lib/api-client';
+import {officeBrand} from '@/lib/office-brand';
+export default function Login({onSuccess}:{onSuccess:()=>void}){const[email,setEmail]=useState(''),[password,setPassword]=useState(''),[busy,setBusy]=useState(false),[message,setMessage]=useState('');
+async function submit(e:React.FormEvent){e.preventDefault();setBusy(true);setMessage('');try{const r=await apiFetch('/api/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password})}),d=await r.json();if(!r.ok)throw new Error(d.error);setPassword('');onSuccess();}catch(e){setMessage(e instanceof Error?e.message:'تعذر الدخول');}finally{setBusy(false);}}
+async function recover(){setBusy(true);setMessage('');try{const r=await apiFetch('/api/auth/recovery',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})});if(!r.ok)throw new Error('راجع البريد وحاول لاحقًا.');setMessage('لو البريد مسجل ومفعّل لدى المكتب، ستصلك رسالة لتعيين كلمة المرور.');}catch(e){setMessage(e instanceof Error?e.message:'تعذر الطلب');}finally{setBusy(false);}}
+return <div className="auth-shell"><form className="auth-card" onSubmit={submit}><img src={officeBrand.logo} className="office-logo" alt="شعار المكتب"/><h1>عامر رشاد</h1><p>تسجيل الدخول إلى نظام إدارة المكتب</p><label className="field">بريد الشركة<input type="email" autoComplete="username" required value={email} onChange={e=>setEmail(e.target.value)} dir="ltr"/></label><label className="field">كلمة المرور<input type="password" autoComplete="current-password" required value={password} onChange={e=>setPassword(e.target.value)} dir="ltr"/></label>{message&&<p role="status">{message}</p>}<button className="primary-btn" disabled={busy}>دخول</button><button className="text-btn" type="button" disabled={busy||!email} onClick={recover}>تفعيل الحساب أو استعادة كلمة المرور</button></form></div>;
+}

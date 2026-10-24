@@ -1,0 +1,67 @@
+[
+  {
+    "file": "lib/claims.ts",
+    "sha256": "e65cb83ce774ba9b9911ead27ab516f4914ecae5b7ed93fb828dc1dc4f7a59d2",
+    "unchanged": true
+  },
+  {
+    "file": "lib/claim-word.ts",
+    "sha256": "0ea11673c7f15428f6e3a995332a422386ad5cbb3c19cac11a7536535a2b0bb8",
+    "unchanged": true
+  },
+  {
+    "file": "lib/claim-canvas.ts",
+    "sha256": "7109c6415e8b132f2e5df999b5c55524bc9ce29b142dec91de573a4dae0d8e01",
+    "unchanged": true
+  },
+  {
+    "file": "lib/accruals.ts",
+    "sha256": "0a9050c426c67c62320acbf7dbd0b8410cbf5decd61e4b190ffa01bca4b11228",
+    "unchanged": true
+  },
+  {
+    "file": "lib/payroll.ts",
+    "sha256": "db227f598f7c08e21185c1dae34dc03b392d34d003829433510e23649e67cf59",
+    "unchanged": true
+  },
+  {
+    "file": "lib/vat.ts",
+    "sha256": "9eebaf96b657bcfd4e4458b400d030e079487d3ba6ea719c2abc2084fd34158d",
+    "unchanged": true
+  },
+  {
+    "file": "lib/income.ts",
+    "sha256": "06d0e070a0e05bb7a2100997d2fb29f0936402a192653c583641b7407631cc2a",
+    "unchanged": true
+  },
+  {
+    "file": "lib/inspections.ts",
+    "sha256": "916a90b835b1d8acd4558b95adc1e2335b5eecdc2bd7eb9d93fb1bf9852332bd",
+    "unchanged": true
+  },
+  {
+    "file": "lib/client-dossier.ts",
+    "sha256": "e6914146a7d20b58d335c922e6c0abc0e67cd20344808414fd04216b17eb2d93",
+    "unchanged": true
+  },
+  {
+    "file": "lib/client-profile.ts",
+    "sha256": "9a65b2593704ba00f9c5f38bcc22e6121a7e917fab79a3ded369c516a48ffbee",
+    "unchanged": true
+  },
+  {
+    "file": "lib/tax-offices.ts",
+    "sha256": "e0eb4536cedb9d73431cc03c2dea9388f666c8b768c8960847911e00bcedb5c5",
+    "unchanged": true
+  },
+  {
+    "file": "lib/expense-categories.ts",
+    "sha256": "2ebe2ad7508641573565ddcd52674abaed58c3efca336721c1450a54bfb05de1",
+    "unchanged": true
+  },
+  {
+    "file": "lib/template-zip.ts",
+    "sha256": "91017a7449ab2f005c244769b38c53f772c26cc08343ba98e34ff8478d209978",
+    "unchanged": true
+  }
+]
